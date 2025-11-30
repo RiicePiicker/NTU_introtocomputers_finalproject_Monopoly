@@ -1,0 +1,78 @@
+class Player {
+
+    static int idCounter;
+
+    field int id;
+    field int location;
+    field int balance;
+    field boolean inJail;
+
+    constructor Player new(int i) {
+        let id = i;
+        let location = 0;
+        let inJail = false;
+        let balance = 1000;
+        return this;
+    }
+
+    //位移
+    method void move(int steps, int boardSize) {
+        let location = (location + steps) % boardSize;
+        return;
+    }
+
+    //交錢
+    method void pay(int amount) {
+        let balance = balance - amount;
+        return;
+    }
+
+    //賺錢
+    method void receive(int amount) {
+        let balance = balance + amount;
+        return;
+    }
+
+    //買不買得起
+    method boolean canAfford(int amount) {
+        if (balance >= amount) {
+            return true;
+        }
+        return false;
+    }
+
+    //買土地
+    method void buyProperty(PropertyTile p, int price) {
+        if (canAfford(price)) {
+            do pay(price);
+            do p.setOwner(this);
+        }
+        return;
+    }
+
+    //坐牢
+    method void goToJail() {
+        let inJail = true;
+        let location = 10;
+        return;
+    }
+
+    //被釋放
+    method void leaveJail() {
+        let inJail = false;
+        return;
+    }
+
+    method int getLocation() {
+        return location;
+    }
+
+    method int getBalance() {
+        return balance;
+    }
+
+    method boolean isInJail() {
+        return inJail;
+    }
+
+}
