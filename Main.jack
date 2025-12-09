@@ -30,7 +30,7 @@ class Main{
         do Sys.wait(1000);
         do Screen.clearScreen();
         let game = Game.new();
-        do game.printPlayerInfo();
+        do game.start();
         return;
     }
 
