@@ -108,13 +108,13 @@ class Player {
     
     //抽到get out jail card
     method void addGetOutOfJailCard() {
-        let getOuJails = getOuJails + 1;
+        let getOutJails = getOutJails + 1;
         return;
     }
 
     //使用Get out Jail
     method void useGetOutOfJailCard() {
-        let getOutJails = getOuJails - 1;
+        let getOutJails = getOutJails - 1;
         do leaveJail();
         return;
     }
@@ -143,5 +143,6 @@ class Player {
         return id;
     }
 }
+
 
 
