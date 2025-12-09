@@ -1,0 +1,66 @@
+class InfrastructureTile {
+
+    field int basePrice;
+    field Player owner;
+
+    constructor InfrastructureTile new(int price) {
+        let basePrice = price;
+        let owner = null;
+        return this;
+    }
+
+    method void setOwner(Player p) {
+        let owner = p;
+        return;
+    }
+
+    method Player getOwner() {
+        return owner;
+    }
+
+    method int calculateRent(Board board) {
+        var int numInfras;
+        var int rentMultiplier;
+        var int diceRollSum;
+        var int rent;
+        
+        do board.rollDice(); 
+        let diceRollSum = board.getDiceSum(); 
+        
+        let numInfras = owner.getInfras();
+        
+        if (numInfras = 1) {
+            let rentMultiplier = 4;
+        }
+        if (numInfras = 2) {
+            let rentMultiplier = 10;
+        }
+
+        let rent = diceRollSum * rentMultiplier;
+        
+        return rent;
+    }
+
+    method void activate(Player p, Board board) {
+        var int rentDue;
+        
+        if (owner = null) {
+            do board.askBuy(p, this, basePrice);
+            return;
+        } 
+        
+        if (~(owner = p)) { 
+            let rentDue = calculateRent(board); 
+            
+            do p.pay(rentDue, board);
+            do owner.receive(rentDue);
+        }
+        return; 
+    }
+
+    method void buyTile(Player p) {
+        do p.buyInfrastructure(this, basePrice);
+        do setOwner(p);
+        return;
+    }
+}
