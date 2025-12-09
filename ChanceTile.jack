@@ -1,0 +1,144 @@
+class ChanceTile {
+
+    constructor ChanceTile new() {
+        return this;
+    }
+
+    method void activate(Player p, Board board) {
+        var int c;
+        var int houses;
+        
+        let c = 0;
+        
+        // Random number generation using timing (until a key is pressed)
+        while (~(Keyboard.keyPressed())) {
+            let c = c + 1;
+        }
+        
+        // Modulo 16 operation (to select one of 16 cards)
+        let c = c - (16 * (c / 16));
+        
+        // All subsequent calls require the Board object for bankruptcy checks,
+        // so we must pass the board object in pay and buy methods.
+        
+        if (c = 0) {
+            // move to boardwalk (39)
+            do p.moveTo(39);
+            do board.tiles[39].activate(p, board);
+        }
+        else {
+            if (c = 1) {
+                // pass go (0)
+                do p.moveTo(0);
+                do board.tiles[0].activate(p, board);
+            }
+            else {
+                if (c = 2) {
+                    // move to illinois (24)
+                    if ((p.getLocation() > 24) | (p.getLocation() = 24)) {
+                        do p.receive(200);
+                    }
+                    do p.moveTo(24);
+                    do board.tiles[24].activate(p, board);
+                }
+                else {
+                    if (c = 3) {
+                        // move to st charles (11)
+                        if ((p.getLocation() > 11) | (p.getLocation() = 11)) {
+                            do p.receive(200);
+                        }
+                        do p.moveTo(11);
+                        do board.tiles[11].activate(p, board);
+                    }
+                    else {
+                        if (c = 4) {
+                            // move to next railroad (5, 15, 25, 35)
+                            while (~((p.getLocation() = 5) | (p.getLocation() = 15) | (p.getLocation() = 25) | (p.getLocation() = 35))) {
+                                do p.move(1, 40);
+                            }
+                            do board.tiles[p.getLocation()].activate(p, board);
+                        }
+                        else {
+                            if (c = 5) {
+                                // move to nearest railroad (5, 15, 25, 35)
+                                while (~((p.getLocation() = 5) | (p.getLocation() = 15) | (p.getLocation() = 25) | (p.getLocation() = 35))) {
+                                    do p.move(1, 40);
+                                }
+                                do board.tiles[p.getLocation()].activate(p, board);
+                            }
+                            else {
+                                if (c = 6) {
+                                    // move to utility (12, 28)
+                                    while (~((p.getLocation() = 12) | (p.getLocation() = 28))) {
+                                        do p.move(1, 40);
+                                    }
+                                    do board.tiles[p.getLocation()].activate(p, board);
+                                }
+                                else {
+                                    if (c = 7) {
+                                        // Bank pays $50
+                                        do p.receive(50);
+                                    }
+                                    else {
+                                        if (c = 8) {
+                                            // Get Out of Jail Free
+                                            do p.addGetOutOfJailCard();
+                                        }
+                                        else {
+                                            if (c = 9) {
+                                                // Go back 3 spaces
+                                                do p.move(-3, 40);
+                                                do board.tiles[p.getLocation()].activate(p, board);
+                                            }
+                                            else {
+                                                if (c = 10) {
+                                                    // Go To Jail
+                                                    do p.goToJail();
+                                                }
+                                                else {
+                                                    if (c = 11) {
+                                                        // Pay for houses/hotels ($25 per house)
+                                                        // NOTE: Assumes p.getNumHouses() and p.pay(amount, board) are available
+                                                        let houses = p.getNumHouses();
+                                                        do p.pay(houses * 25, board);
+                                                    }
+                                                    else {
+                                                        if (c = 12) {
+                                                            // Pay $15
+                                                            do p.pay(15, board);
+                                                        }
+                                                        else {
+                                                            if (c = 13) {
+                                                                // Move to Reading Railroad (25)
+                                                                do p.moveTo(25);
+                                                                do board.tiles[25].activate(p, board);
+                                                            }
+                                                            else {
+                                                                if (c = 14) {
+                                                                    
+                                                                    do board.recieveFromOther(p, -10);
+                                                                }
+                                                                else {
+                                                                    if (c = 15) {
+                                                                        // Receive $150
+                                                                        do p.receive(150);
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return;
+    }
+}
+```
