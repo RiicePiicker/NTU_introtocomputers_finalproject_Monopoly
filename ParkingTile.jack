@@ -1,0 +1,10 @@
+class ParkingTile {
+
+    constructor ParkingTile new() {
+        return this;
+    }
+
+    method void activate(Player p) {
+        return;
+    }
+}
