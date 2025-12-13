@@ -13,7 +13,7 @@ class ChestTile {
             }
         }
         if (n = 1) {
-            do player.moveTwo(0);
+            do player.moveTo(0);
         }
         if (n = 2) {
             do player.receive(200);
@@ -64,4 +64,5 @@ class ChestTile {
         }
         return;
     }
+
 }
