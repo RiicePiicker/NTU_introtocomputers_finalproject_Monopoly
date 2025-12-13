@@ -55,9 +55,9 @@ class Tile {
         return this;
     }
 
-    constructor Tile newTrain(int price, int rent){
+    constructor Tile newTrain(int price){
         let type = TRAIN;
-        let trTile = TrainTile.new(price, rent);
+        let trTile = TrainTile.new(price);
         return this;
     }
 
@@ -142,4 +142,5 @@ class Tile {
         return type;
     }
 }
+
 
