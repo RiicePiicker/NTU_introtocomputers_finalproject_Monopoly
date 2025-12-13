@@ -76,7 +76,14 @@ class Board{
         return;
     }
     method void handleBankruptcy(Player p) {
-        
+        var i;
+        var Tile t;
+        let i = 0;
+        while (i < size) {
+            let t = tiles[i];
+            do t.resetOwnerIfMatches(p);  //還沒做
+            let i = i + 1;
+        }
         return;
     }
 
