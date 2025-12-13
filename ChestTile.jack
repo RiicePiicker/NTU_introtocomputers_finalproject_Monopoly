@@ -1,6 +1,6 @@
 class ChestTile {
     
-    function void drawchest (Player player) {
+    method void activate (Player player, Board board) {
         var int houses;
         var int housesprice;
         var int n;
@@ -66,3 +66,4 @@ class ChestTile {
     }
 
 }
+
