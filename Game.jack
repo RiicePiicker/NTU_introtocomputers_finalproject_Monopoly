@@ -83,6 +83,10 @@ class Game{
         do Game.drawProperties(7, 214, 81);
         do Game.drawProperties(7, 214, 100);
 
+        do Game.drawGo(219, 221);
+        do Game.drawFreeParking(65);
+        do Game.drawChest(5245);
+
 
         return;
     }
@@ -137,6 +141,190 @@ class Game{
 
         if (category = 7) { //black
             do Screen.drawRectangle(x+1, y+1, x+6, y+18);
+        }
+
+        return;
+    }
+
+    function void drawGo(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+4, y+1, x+11, y+10);
+        do Screen.drawRectangle(x+17, y+1, x+24, y+10);
+
+        do Screen.drawRectangle(x+5, y+13, x+6, y+13);
+        do Screen.drawRectangle(x+26, y+13, x+28, y+13);
+        do Screen.drawRectangle(x+3, y+14, x+7, y+14);
+        do Screen.drawRectangle(x+24, y+14, x+27, y+14);
+        do Screen.drawRectangle(x+1, y+15, x+25, y+16);
+        do Screen.drawRectangle(x+5, y+18, x+6, y+18);
+        do Screen.drawRectangle(x+26, y+18, x+28, y+18);
+        do Screen.drawRectangle(x+3, y+17, x+7, y+17);
+        do Screen.drawRectangle(x+24, y+17, x+27, y+17);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+6, y+3, x+11, y+4);
+        do Screen.drawRectangle(x+6, y+3, x+7, y+8);
+        do Screen.drawRectangle(x+8, y+7, x+9, y+8);
+        do Screen.drawRectangle(x+19, y+3, x+22, y+8);
+
+        do Screen.setColor(1);
+	    return;
+    }
+
+    function void drawFreeParking(int location) {
+	    var int memAddress; 
+	    let memAddress = 16384+location;
+	    // column 0
+	    do Memory.poke(memAddress +128, -32);
+	    do Memory.poke(memAddress, 0);
+	    do Memory.poke(memAddress +32, 0);
+	    do Memory.poke(memAddress +64, 0);
+	    do Memory.poke(memAddress +96, 0);
+	    do Memory.poke(memAddress +160, -16);
+	    do Memory.poke(memAddress +192, 16432);
+	    do Memory.poke(memAddress +224, 16408);
+	    do Memory.poke(memAddress +256, 16408);
+	    do Memory.poke(memAddress +288, 16408);
+	    do Memory.poke(memAddress +320, 16408);
+	    do Memory.poke(memAddress +352, 16408);
+	    do Memory.poke(memAddress +384, -4);
+	    do Memory.poke(memAddress +416, -2);
+	    do Memory.poke(memAddress +448, -2);
+	    do Memory.poke(memAddress +480, -2);
+	    do Memory.poke(memAddress +512, -2);
+	    do Memory.poke(memAddress +544, -2018);
+	    do Memory.poke(memAddress +576, -3122);
+	    do Memory.poke(memAddress +608, -2068);
+	    do Memory.poke(memAddress +640, 1632);
+	    do Memory.poke(memAddress +672, 1632);
+	    do Memory.poke(memAddress +704, 2016);
+	    do Memory.poke(memAddress +736, 960);
+	    // column 1
+	    do Memory.poke(memAddress +129, 255);
+	    do Memory.poke(memAddress +1, 0);
+	    do Memory.poke(memAddress +33, 0);
+	    do Memory.poke(memAddress +65, 0);
+	    do Memory.poke(memAddress +97, 0);
+	    do Memory.poke(memAddress +161, 511);
+	    do Memory.poke(memAddress +193, 896);
+	    do Memory.poke(memAddress +225, 768);
+	    do Memory.poke(memAddress +257, 768);
+	    do Memory.poke(memAddress +289, 768);
+	    do Memory.poke(memAddress +321, 768);
+	    do Memory.poke(memAddress +353, 768);
+	    do Memory.poke(memAddress +385, 8191);
+	    do Memory.poke(memAddress +417, 16383);
+	    do Memory.poke(memAddress +449, 32767);
+	    do Memory.poke(memAddress +481, 32767);
+	    do Memory.poke(memAddress +513, 32767);
+	    do Memory.poke(memAddress +545, 32515);
+	    do Memory.poke(memAddress +577, 15993);
+	    do Memory.poke(memAddress +609, 7933);
+	    do Memory.poke(memAddress +641, 204);
+	    do Memory.poke(memAddress +673, 204);
+	    do Memory.poke(memAddress +705, 252);
+	    do Memory.poke(memAddress +737, 120);
+	    return;
+    }
+
+    function void drawChest(int location) {
+	    var int memAddress; 
+	    let memAddress = 16384+location;
+	    // column 0
+	    do Memory.poke(memAddress, 224);
+	    do Memory.poke(memAddress +32, 944);
+	    do Memory.poke(memAddress +64, 3608);
+	    do Memory.poke(memAddress +96, 14360);
+	    do Memory.poke(memAddress +128, 30832);
+	    do Memory.poke(memAddress +160, -12816);
+	    do Memory.poke(memAddress +192, -14532);
+	    do Memory.poke(memAddress +224, 31783);
+	    do Memory.poke(memAddress +256, 12333);
+	    do Memory.poke(memAddress +288, 11321);
+	    do Memory.poke(memAddress +320, 9953);
+	    do Memory.poke(memAddress +352, 9091);
+	    do Memory.poke(memAddress +384, 8462);
+	    do Memory.poke(memAddress +416, 14648);
+	    do Memory.poke(memAddress +448, 4064);
+	    do Memory.poke(memAddress +480, 896);
+	    return;
+    }
+
+    function void drawPlayer(int id, int x, int y){ //畫出玩家位置
+        if (id = 1){ //spade
+            do Screen.drawRectangle(x+4, y+1, x+5, y+1);
+            do Screen.drawRectangle(x+3, y+2, x+6, y+2);
+            do Screen.drawRectangle(x+2, y+3, x+7, y+3);
+            do Screen.drawRectangle(x+1, y+4, x+8, y+6);
+            do Screen.drawRectangle(x+4, y+7, x+5, y+7);
+            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
+        }
+
+        if (id = 2){ //heart
+            do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+            do Screen.drawRectangle(x+6, y+2, x+7, y+2);
+            do Screen.drawRectangle(x+1, y+3, x+8, y+5);
+            do Screen.drawRectangle(x+2, y+6, x+6, y+6);
+            do Screen.drawRectangle(x+3, y+7, x+5, y+7);
+            do Screen.drawRectangle(x+4, y+8, x+4, y+8);
+        }
+
+        if (id = 3){ //diamond
+            do Screen.drawRectangle(x+5, y+1, x+5, y+1);
+            do Screen.drawRectangle(x+4, y+2, x+6, y+2);
+            do Screen.drawRectangle(x+3, y+3, x+7, y+3);
+            do Screen.drawRectangle(x+2, y+4, x+8, y+5);
+            do Screen.drawRectangle(x+3, y+6, x+7, y+6);
+            do Screen.drawRectangle(x+4, y+7, x+6, y+7);
+            do Screen.drawRectangle(x+5, y+8, x+5, y+8);
+        }
+
+        if (id = 4){ //cube
+            do Screen.drawRectangle(x+3, y+1, x+6, y+5);
+            do Screen.drawRectangle(x+1, y+3, x+2, y+6);
+            do Screen.drawRectangle(x+7, y+3, x+8, y+6);
+            do Screen.drawRectangle(x+4, y+6, x+5, y+7);
+            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
+        }
+
+        return;
+    }
+
+    function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示(未完成)
+        if (id = 1){ //spade
+            do Screen.drawRectangle(x+4, y+1, x+5, y+1);
+            do Screen.drawRectangle(x+3, y+2, x+6, y+2);
+            do Screen.drawRectangle(x+2, y+3, x+7, y+3);
+            do Screen.drawRectangle(x+1, y+4, x+8, y+6);
+            do Screen.drawRectangle(x+4, y+7, x+5, y+7);
+            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
+        }
+
+        if (id = 2){ //heart
+            do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+            do Screen.drawRectangle(x+6, y+2, x+7, y+2);
+            do Screen.drawRectangle(x+1, y+3, x+8, y+5);
+            do Screen.drawRectangle(x+2, y+6, x+6, y+6);
+            do Screen.drawRectangle(x+3, y+7, x+5, y+7);
+            do Screen.drawRectangle(x+4, y+8, x+4, y+8);
+        }
+
+        if (id = 3){ //diamond
+            do Screen.drawRectangle(x+5, y+1, x+5, y+1);
+            do Screen.drawRectangle(x+4, y+2, x+6, y+2);
+            do Screen.drawRectangle(x+3, y+3, x+7, y+3);
+            do Screen.drawRectangle(x+2, y+4, x+8, y+5);
+            do Screen.drawRectangle(x+3, y+6, x+7, y+6);
+            do Screen.drawRectangle(x+4, y+7, x+6, y+7);
+            do Screen.drawRectangle(x+5, y+8, x+5, y+8);
+        }
+
+        if (id = 4){ //cube
+            do Screen.drawRectangle(x+3, y+1, x+6, y+5);
+            do Screen.drawRectangle(x+1, y+3, x+2, y+6);
+            do Screen.drawRectangle(x+7, y+3, x+8, y+6);
+            do Screen.drawRectangle(x+4, y+6, x+5, y+7);
+            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
         }
 
         return;
