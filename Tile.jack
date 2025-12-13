@@ -37,9 +37,9 @@ class Tile {
 
 
 
-    constructor Tile newProperty(int price, int rent) {
+    constructor Tile newProperty(int price, int rent,int houseCost) {
         let type = PROPERTY;
-        let pTile = PropertyTile.new(price, rent);
+        let pTile = PropertyTile.new(price, rent,houseCost);
         return this;
     }
 
@@ -142,3 +142,4 @@ class Tile {
         return type;
     }
 }
+
