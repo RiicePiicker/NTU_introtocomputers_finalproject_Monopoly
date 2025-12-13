@@ -139,6 +139,26 @@ class Player {
         return;
     }
 
+        // 蓋房子 (Build House)
+    method void buildHouse(PropertyTile p, Board board) {
+
+        // Must own the property
+        if (~(p.getOwner() = this)) {
+            return;
+        }
+
+        // Must afford house
+        if (~canAfford(p.getHouseCost())) {
+                return;
+        }
+
+         // Pay and build
+        do pay(p.getHouseCost(), board);
+        do p.addHouse();    
+        return;
+    }
+
+
     method int getLocation() {
         return location;
     }
@@ -171,3 +191,4 @@ class Player {
       return numHouses;
    }
 }
+
