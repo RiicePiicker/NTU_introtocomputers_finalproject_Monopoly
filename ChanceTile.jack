@@ -24,13 +24,13 @@ class ChanceTile {
         if (c = 0) {
             // move to boardwalk (39)
             do p.moveTo(39);
-            do board.tiles[39].activate(p, board);
+            do board.handleLanding(p);
         }
         else {
             if (c = 1) {
                 // pass go (0)
                 do p.moveTo(0);
-                do board.tiles[0].activate(p, board);
+                do board.handleLanding(p);
             }
             else {
                 if (c = 2) {
@@ -39,7 +39,7 @@ class ChanceTile {
                         do p.receive(200);
                     }
                     do p.moveTo(24);
-                    do board.tiles[24].activate(p, board);
+                    do board.handleLanding(p);
                 }
                 else {
                     if (c = 3) {
@@ -48,7 +48,7 @@ class ChanceTile {
                             do p.receive(200);
                         }
                         do p.moveTo(11);
-                        do board.tiles[11].activate(p, board);
+                        do board.handleLanding(p);
                     }
                     else {
                         if (c = 4) {
@@ -56,7 +56,7 @@ class ChanceTile {
                             while (~((p.getLocation() = 5) | (p.getLocation() = 15) | (p.getLocation() = 25) | (p.getLocation() = 35))) {
                                 do p.move(1, 40);
                             }
-                            do board.tiles[p.getLocation()].activate(p, board);
+                            do board.handleLanding(p);
                         }
                         else {
                             if (c = 5) {
@@ -64,7 +64,7 @@ class ChanceTile {
                                 while (~((p.getLocation() = 5) | (p.getLocation() = 15) | (p.getLocation() = 25) | (p.getLocation() = 35))) {
                                     do p.move(1, 40);
                                 }
-                                do board.tiles[p.getLocation()].activate(p, board);
+                                do board.handleLanding(p);
                             }
                             else {
                                 if (c = 6) {
@@ -72,7 +72,7 @@ class ChanceTile {
                                     while (~((p.getLocation() = 12) | (p.getLocation() = 28))) {
                                         do p.move(1, 40);
                                     }
-                                    do board.tiles[p.getLocation()].activate(p, board);
+                                    do board.handleLanding(p);
                                 }
                                 else {
                                     if (c = 7) {
@@ -88,7 +88,7 @@ class ChanceTile {
                                             if (c = 9) {
                                                 // Go back 3 spaces
                                                 do p.move(-3, 40);
-                                                do board.tiles[p.getLocation()].activate(p, board);
+                                                do board.handleLanding(p);
                                             }
                                             else {
                                                 if (c = 10) {
@@ -111,12 +111,12 @@ class ChanceTile {
                                                             if (c = 13) {
                                                                 // Move to Reading Railroad (25)
                                                                 do p.moveTo(25);
-                                                                do board.tiles[25].activate(p, board);
+                                                                do board.handleLanding(p);
                                                             }
                                                             else {
                                                                 if (c = 14) {
                                                                     
-                                                                    do board.recieveFromOther(p, -10);
+                                                                    do board.receiveFromOther(p, -10);
                                                                 }
                                                                 else {
                                                                     if (c = 15) {
