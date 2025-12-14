@@ -58,6 +58,10 @@ class Game{
 
         do Screen.setColor(0);
         do Screen.drawRectangle(44, 44, 212, 212); //inner-square
+        do Screen.drawRectangle(120, 35, 137, 35); //up-line
+        do Screen.drawRectangle(35, 120, 35, 137); //left-line
+        do Screen.drawRectangle(221, 120, 221, 137); //right-line
+        do Screen.drawRectangle(120, 221, 137, 221); //down-line
 
         do Screen.setColor(1); //properties
         do Game.drawProperties(1, 138, 214);
@@ -87,13 +91,7 @@ class Game{
         do Game.drawProperties(7, 214, 43);
         do Game.drawProperties(7, 214, 81);
         do Game.drawProperties(7, 214, 100);
-
-        do Screen.setColor(0);// special tiles
-        do Screen.drawRectangle(120, 35, 137, 35); //up-line
-        do Screen.drawRectangle(35, 120, 35, 137); //left-line
-        do Screen.drawRectangle(221, 120, 221, 137); //right-line
-        do Screen.drawRectangle(120, 221, 137, 221); //down-line
-
+        
         do Screen.setColor(1);
         do Game.drawGo(219, 221);
         do Game.drawCar(5,3);
@@ -506,7 +504,7 @@ class Game{
             do Screen.drawRectangle(x+5, y+8, x+5, y+8);
         }
 
-        if (id = 4){ //cube
+        if (id = 4){ //club
             do Screen.drawRectangle(x+3, y+1, x+6, y+5);
             do Screen.drawRectangle(x+1, y+3, x+2, y+6);
             do Screen.drawRectangle(x+7, y+3, x+8, y+6);
@@ -519,39 +517,29 @@ class Game{
 
     function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示(未完成)
         if (id = 1){ //spade
-            do Screen.drawRectangle(x+4, y+1, x+5, y+1);
-            do Screen.drawRectangle(x+3, y+2, x+6, y+2);
-            do Screen.drawRectangle(x+2, y+3, x+7, y+3);
-            do Screen.drawRectangle(x+1, y+4, x+8, y+6);
-            do Screen.drawRectangle(x+4, y+7, x+5, y+7);
-            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
+            do Screen.drawRectangle(x+3, y+1, x+3, y+5);
+            do Screen.drawRectangle(x+2, y+2, x+4, y+2);
+            do Screen.drawRectangle(x+1, y+3, x+5, y+4);
         }
 
         if (id = 2){ //heart
-            do Screen.drawRectangle(x+2, y+2, x+3, y+2);
-            do Screen.drawRectangle(x+6, y+2, x+7, y+2);
-            do Screen.drawRectangle(x+1, y+3, x+8, y+5);
-            do Screen.drawRectangle(x+2, y+6, x+6, y+6);
-            do Screen.drawRectangle(x+3, y+7, x+5, y+7);
-            do Screen.drawRectangle(x+4, y+8, x+4, y+8);
+            do Screen.drawRectangle(x+2, y+1, x+2, y+4);
+            do Screen.drawRectangle(x+4, y+1, x+4, y+4);
+            do Screen.drawRectangle(x+1, y+2, x+5, y+3);
+            do Screen.drawPixel(x+3, y+5);
         }
 
         if (id = 3){ //diamond
-            do Screen.drawRectangle(x+5, y+1, x+5, y+1);
-            do Screen.drawRectangle(x+4, y+2, x+6, y+2);
-            do Screen.drawRectangle(x+3, y+3, x+7, y+3);
-            do Screen.drawRectangle(x+2, y+4, x+8, y+5);
-            do Screen.drawRectangle(x+3, y+6, x+7, y+6);
-            do Screen.drawRectangle(x+4, y+7, x+6, y+7);
-            do Screen.drawRectangle(x+5, y+8, x+5, y+8);
+            do Screen.drawRectangle(x+2, y+2, x+4, y+4);
+            do Screen.drawRectangle(x+3, y+1, x+3, y+5);
+            do Screen.drawRectangle(x+1, y+3, x+5, y+3);
         }
 
-        if (id = 4){ //cube
-            do Screen.drawRectangle(x+3, y+1, x+6, y+5);
-            do Screen.drawRectangle(x+1, y+3, x+2, y+6);
-            do Screen.drawRectangle(x+7, y+3, x+8, y+6);
-            do Screen.drawRectangle(x+4, y+6, x+5, y+7);
-            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
+        if (id = 4){ //club
+            do Screen.drawRectangle(x+2, y+1, x+4, y+1);
+            do Screen.drawRectangle(x+1, y+2, x+5, y+3);
+            do Screen.drawPixel(x+3, y+4);
+            do Screen.drawRectangle(x+2, y+5, x+4, y+5);
         }
 
         return;
