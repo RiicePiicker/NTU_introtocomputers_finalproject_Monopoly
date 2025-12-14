@@ -15,23 +15,21 @@ class Game{
     function void drawMap(){
         
         //corners and center
-        do Screen.drawRectangle(0, 0, 255, 255); //boarder
-        do Screen.setColor(0);
-        do Screen.drawRectangle(44, 44, 212, 212); //inner-square
-        do Screen.drawRectangle(2, 2, 41, 41); //up-left
-        do Screen.drawRectangle(215, 2, 253, 41); //up-right
-        do Screen.drawRectangle(2, 215, 41, 253); //down-left
-        do Screen.drawRectangle(215, 215, 253, 253); //down-right
-        do Screen.drawRectangle(44, 2, 212, 41); //top-road
-        do Screen.drawRectangle(2, 44, 41, 212); //leftward-road
-        do Screen.drawRectangle(215, 44, 253, 212); //rightward-road
-        do Screen.drawRectangle(44, 215, 212, 253); //bottom-road
-
         do Screen.setColor(1);
-        do Screen.drawRectangle(44, 35, 212, 35); //up
-        do Screen.drawRectangle(35, 44, 35, 212); //left
-        do Screen.drawRectangle(221, 44, 221, 212); //right
-        do Screen.drawRectangle(44, 221, 212, 221); //down
+        do Screen.drawRectangle(0, 0, 255, 1); //top-boarder
+        do Screen.drawRectangle(0, 254, 255, 255); //bottom-boarder
+        do Screen.drawRectangle(0, 0, 1, 255); //left-boarder
+        do Screen.drawRectangle(254, 0, 255, 255); //right-boarder
+
+        do Screen.drawRectangle(0, 42, 255, 43); //top-inner
+        do Screen.drawRectangle(0, 213, 255, 214); //bottom-inner
+        do Screen.drawRectangle(42, 0, 43, 255); //left-inner
+        do Screen.drawRectangle(213, 0, 214, 255); //right-inner
+        
+        do Screen.drawRectangle(44, 35, 212, 35); //up-line
+        do Screen.drawRectangle(35, 44, 35, 212); //left-line
+        do Screen.drawRectangle(221, 44, 221, 212); //right-line
+        do Screen.drawRectangle(44, 221, 212, 221); //down-line
 
         do Screen.drawRectangle(62, 2, 62, 253); //ver1
         do Screen.drawRectangle(81, 2, 81, 253); //ver2
@@ -54,7 +52,7 @@ class Game{
         do Screen.setColor(0);
         do Screen.drawRectangle(44, 44, 212, 212); //inner-square
 
-        do Screen.setColor(1);
+        do Screen.setColor(1); //properties
         do Game.drawProperties(1, 138, 214);
         do Game.drawProperties(1, 176, 214);
         do Game.drawProperties(1, 195, 214);
@@ -83,10 +81,25 @@ class Game{
         do Game.drawProperties(7, 214, 81);
         do Game.drawProperties(7, 214, 100);
 
-        do Game.drawGo(219, 221);
-        do Game.drawFreeParking(65);
-        do Game.drawChest(5245);
+        do Screen.setColor(0);// special tiles
+        do Screen.drawRectangle(120, 35, 137, 35); //up-line
+        do Screen.drawRectangle(35, 120, 35, 137); //left-line
+        do Screen.drawRectangle(221, 120, 221, 137); //right-line
+        do Screen.drawRectangle(120, 221, 137, 221); //down-line
 
+        do Screen.setColor(1);
+        do Game.drawGo(219, 221);
+        do Game.drawCar(5,3);
+        do Game.drawChest(158,221);
+        do Game.drawChest2(221,63);
+        do Game.drawMetro(120,221);
+        do Game.drawMetro(120,27);
+        do Game.drawMetro2(221,120);
+        do Game.drawMetro2(27,120);
+        do Game.drawChance(62,221);
+        do Game.drawChance2(62,35);
+        do Game.drawTax(221, 177);
+        do Game.drawTax2(35, 63);
 
         return;
     }
@@ -171,83 +184,203 @@ class Game{
 	    return;
     }
 
-    function void drawFreeParking(int location) {
-	    var int memAddress; 
-	    let memAddress = 16384+location;
-	    // column 0
-	    do Memory.poke(memAddress +128, -32);
-	    do Memory.poke(memAddress, 0);
-	    do Memory.poke(memAddress +32, 0);
-	    do Memory.poke(memAddress +64, 0);
-	    do Memory.poke(memAddress +96, 0);
-	    do Memory.poke(memAddress +160, -16);
-	    do Memory.poke(memAddress +192, 16432);
-	    do Memory.poke(memAddress +224, 16408);
-	    do Memory.poke(memAddress +256, 16408);
-	    do Memory.poke(memAddress +288, 16408);
-	    do Memory.poke(memAddress +320, 16408);
-	    do Memory.poke(memAddress +352, 16408);
-	    do Memory.poke(memAddress +384, -4);
-	    do Memory.poke(memAddress +416, -2);
-	    do Memory.poke(memAddress +448, -2);
-	    do Memory.poke(memAddress +480, -2);
-	    do Memory.poke(memAddress +512, -2);
-	    do Memory.poke(memAddress +544, -2018);
-	    do Memory.poke(memAddress +576, -3122);
-	    do Memory.poke(memAddress +608, -2068);
-	    do Memory.poke(memAddress +640, 1632);
-	    do Memory.poke(memAddress +672, 1632);
-	    do Memory.poke(memAddress +704, 2016);
-	    do Memory.poke(memAddress +736, 960);
-	    // column 1
-	    do Memory.poke(memAddress +129, 255);
-	    do Memory.poke(memAddress +1, 0);
-	    do Memory.poke(memAddress +33, 0);
-	    do Memory.poke(memAddress +65, 0);
-	    do Memory.poke(memAddress +97, 0);
-	    do Memory.poke(memAddress +161, 511);
-	    do Memory.poke(memAddress +193, 896);
-	    do Memory.poke(memAddress +225, 768);
-	    do Memory.poke(memAddress +257, 768);
-	    do Memory.poke(memAddress +289, 768);
-	    do Memory.poke(memAddress +321, 768);
-	    do Memory.poke(memAddress +353, 768);
-	    do Memory.poke(memAddress +385, 8191);
-	    do Memory.poke(memAddress +417, 16383);
-	    do Memory.poke(memAddress +449, 32767);
-	    do Memory.poke(memAddress +481, 32767);
-	    do Memory.poke(memAddress +513, 32767);
-	    do Memory.poke(memAddress +545, 32515);
-	    do Memory.poke(memAddress +577, 15993);
-	    do Memory.poke(memAddress +609, 7933);
-	    do Memory.poke(memAddress +641, 204);
-	    do Memory.poke(memAddress +673, 204);
-	    do Memory.poke(memAddress +705, 252);
-	    do Memory.poke(memAddress +737, 120);
+    function void drawCar(int x, int y) {
+    // 繪製開始前，確保設置為黑色
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+3, y+1, x+27, y+9);
+        do Screen.drawRectangle(x+1, y+10, x+32, y+18);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+5, y+3, x+14, y+9);
+        do Screen.drawRectangle(x+16, y+3, x+25, y+9);
+        do Screen.drawRectangle(x+3, y+1, x+3, y+3);
+        do Screen.drawRectangle(x+27, y+1, x+27, y+2);
+        do Screen.drawPixel(x+4, y+1);
+        do Screen.drawPixel(x+26, y+1);
+        do Screen.drawPixel(x+1, y+10);
+        do Screen.drawPixel(x+1, y+18);
+        do Screen.drawPixel(x+31, y+10);
+        do Screen.drawPixel(x+31, y+18);
+        do Screen.drawRectangle(x+32, y+10, x+32, y+11);
+        do Screen.drawRectangle(x+32, y+17, x+32, y+18);
+        do Screen.drawRectangle(x+4, y+16, x+11, y+18);
+        do Screen.drawRectangle(x+19, y+16, x+26, y+18);
+
+        do Screen.setColor(1);
+        do Screen.drawPixel(x+5, y+3);
+        do Screen.drawPixel(x+25, y+3);
+        do Screen.drawPixel(x+4, y+16);
+        do Screen.drawPixel(x+11, y+16);
+        do Screen.drawPixel(x+19, y+16);
+        do Screen.drawPixel(x+26, y+16);
+        do Screen.drawRectangle(x+5, y+17, x+10, y+22);
+        do Screen.drawRectangle(x+20, y+17, x+25, y+22);
+
+        do Screen.setColor(0);
+        do Screen.drawPixel(x+5, y+17);
+        do Screen.drawPixel(x+10, y+17);
+        do Screen.drawPixel(x+5, y+22);
+        do Screen.drawPixel(x+10, y+22);
+        do Screen.drawPixel(x+20, y+17);
+        do Screen.drawPixel(x+25, y+17);
+        do Screen.drawPixel(x+20, y+22);
+        do Screen.drawPixel(x+25, y+22);
+        do Screen.drawRectangle(x+7, y+19, x+8, y+20);  
+        do Screen.drawRectangle(x+22, y+19, x+23, y+20); 
+    
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void drawChest(int x, int y) {
+        do Screen.setColor(1);
+	    do Screen.drawRectangle(x+5, y+1, x+12, y+1);
+        do Screen.drawRectangle(x+3, y+2, x+14, y+2);
+        do Screen.drawRectangle(x+2, y+3, x+15, y+4);
+        do Screen.drawRectangle(x+1, y+5, x+16, y+13);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+1, y+7, x+16, y+7);
+        do Screen.drawRectangle(x+7, y+6, x+10, y+9);
+        do Screen.drawRectangle(x, y, x+17, y);
+
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+8, y+7, x+9, y+8);
+
 	    return;
     }
 
-    function void drawChest(int location) {
-	    var int memAddress; 
-	    let memAddress = 16384+location;
-	    // column 0
-	    do Memory.poke(memAddress, 224);
-	    do Memory.poke(memAddress +32, 944);
-	    do Memory.poke(memAddress +64, 3608);
-	    do Memory.poke(memAddress +96, 14360);
-	    do Memory.poke(memAddress +128, 30832);
-	    do Memory.poke(memAddress +160, -12816);
-	    do Memory.poke(memAddress +192, -14532);
-	    do Memory.poke(memAddress +224, 31783);
-	    do Memory.poke(memAddress +256, 12333);
-	    do Memory.poke(memAddress +288, 11321);
-	    do Memory.poke(memAddress +320, 9953);
-	    do Memory.poke(memAddress +352, 9091);
-	    do Memory.poke(memAddress +384, 8462);
-	    do Memory.poke(memAddress +416, 14648);
-	    do Memory.poke(memAddress +448, 4064);
-	    do Memory.poke(memAddress +480, 896);
+    function void drawChest2(int x, int y) {
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x + 1, y + 5, x + 1, y + 12); 
+        do Screen.drawRectangle(x + 2, y + 3, x + 2, y + 14);
+        do Screen.drawRectangle(x + 3, y + 2, x + 4, y + 15);
+        do Screen.drawRectangle(x + 5, y + 1, x + 13, y + 16);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x + 7, y + 1, x + 7, y + 16);
+        do Screen.drawRectangle(x + 6, y + 7, x + 9, y + 10);
+        do Screen.drawRectangle(x, y, x, y + 17);
+
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x + 7, y + 8, x + 8, y + 9);
+
+        return;
+    }
+
+    function void drawMetro(int x, int y) {
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+6, y+1, x+13, y+1);
+        do Screen.drawRectangle(x+5, y+2, x+12, y+2);
+        do Screen.drawRectangle(x+4, y+3, x+8, y+3);
+        do Screen.drawRectangle(x+1, y+4, x+7, y+4);
+        do Screen.drawRectangle(x+1, y+5, x+6, y+5);
+
+        do Screen.drawRectangle(x+11, y+4, x+16, y+4);
+        do Screen.drawRectangle(x+10, y+5, x+16, y+5);
+        do Screen.drawRectangle(x+9, y+6, x+13, y+6);
+        do Screen.drawRectangle(x+5, y+7, x+12, y+7);
+        do Screen.drawRectangle(x+4, y+8, x+11, y+8);
+
+        return;
+    }
+
+    function void drawMetro2(int x, int y) {
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x + 1, y + 6, x + 1, y + 13);
+        do Screen.drawRectangle(x + 2, y + 5, x + 2, y + 12);
+        do Screen.drawRectangle(x + 3, y + 4, x + 3, y + 8);
+        do Screen.drawRectangle(x + 4, y + 1, x + 4, y + 7);
+        do Screen.drawRectangle(x + 5, y + 1, x + 5, y + 6);
+
+        do Screen.drawRectangle(x + 4, y + 11, x + 4, y + 16);
+        do Screen.drawRectangle(x + 5, y + 10, x + 5, y + 16);
+        do Screen.drawRectangle(x + 6, y + 9, x + 6, y + 13);
+        do Screen.drawRectangle(x + 7, y + 5, x + 7, y + 12);
+        do Screen.drawRectangle(x + 8, y + 4, x + 8, y + 11);
+
+        return;
+    }
+
+    function void drawChance(int x, int y){
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+1, y, x+18, y);
+
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+7, y+1, x+12, y+1);
+        do Screen.drawRectangle(x+6, y+2, x+7, y+4);
+        do Screen.drawRectangle(x+12, y+2, x+13, y+5);
+        do Screen.drawRectangle(x+10, y+5, x+11, y+6);
+        do Screen.drawRectangle(x+9, y+6, x+10, y+7);
+        do Screen.drawRectangle(x+9, y+9, x+10, y+10);
+
 	    return;
+    }
+
+    function void drawChance2(int x, int y){
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x + 1, y, x + 18, y);
+
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x + 7, y - 1, x + 12, y - 1);
+        do Screen.drawRectangle(x + 6, y - 5, x + 7, y - 2);
+        do Screen.drawRectangle(x + 12, y - 4, x + 13, y - 2);
+        do Screen.drawRectangle(x + 8, y - 6, x + 9, y - 5);
+        do Screen.drawRectangle(x + 9, y - 7, x + 10, y - 6);
+        do Screen.drawRectangle(x + 9, y - 10, x + 10, y - 9);
+
+        return;
+    }
+
+    function void drawTax(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+7, x+5, y+10);
+        do Screen.drawRectangle(x+1, y+12, x+1, y+16);
+        do Screen.drawRectangle(x+2, y+14, x+5, y+14);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x-1, y, x, y+17);
+        do Screen.drawRectangle(x+2, y+8, x+2, y+9);
+        do Screen.drawRectangle(x+4, y+8, x+5, y+9);
+
+        do Screen.setColor(1);
+        do Screen.drawPixel(x+1, y+1);
+        do Screen.drawPixel(x+5, y+1);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawPixel(x+4, y+2);
+        do Screen.drawPixel(x+3, y+3);
+        do Screen.drawPixel(x+1, y+5);
+        do Screen.drawPixel(x+5, y+5);
+        do Screen.drawPixel(x+2, y+4);
+        do Screen.drawPixel(x+4, y+4);
+
+	    return;
+    }
+
+    function void drawTax2(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x - 5, y + 7, x - 1, y + 10);
+        do Screen.drawRectangle(x - 1, y + 1, x - 1, y + 5);
+        do Screen.drawRectangle(x - 5, y + 3, x - 2, y + 3);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x, y, x, y + 17);
+        do Screen.drawRectangle(x - 2, y + 8, x - 2, y + 9);
+        do Screen.drawRectangle(x - 5, y + 8, x - 4, y + 9);
+
+        do Screen.setColor(1);
+        do Screen.drawPixel(x - 1, y + 12);
+        do Screen.drawPixel(x - 5, y + 12);
+        do Screen.drawPixel(x - 2, y + 13);
+        do Screen.drawPixel(x - 4, y + 13);
+        do Screen.drawPixel(x - 3, y + 14);
+        do Screen.drawPixel(x - 1, y + 16);
+        do Screen.drawPixel(x - 5, y + 16);
+        do Screen.drawPixel(x - 2, y + 15);
+        do Screen.drawPixel(x - 4, y + 15);
+    
+        return;
     }
 
     function void drawPlayer(int id, int x, int y){ //畫出玩家位置
