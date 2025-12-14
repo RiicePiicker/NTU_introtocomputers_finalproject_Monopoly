@@ -155,7 +155,8 @@ class Player {
          // Pay and build
         do pay(p.getHouseCost(), board);
         do p.addHouse();   
-        let numHouses=numHouses+1;return;
+        let numHouses=numHouses+1;
+        return;
     }
 
 
@@ -191,5 +192,6 @@ class Player {
       return numHouses;
    }
 }
+
 
 
