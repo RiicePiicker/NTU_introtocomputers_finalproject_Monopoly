@@ -14,15 +14,17 @@ class ChestTile {
         // Random number generation using timing
         while (~(Keyboard.keyPressed())) {
             let c = c + 1;
+            if(c = 16){
+               let c=0;
+            }
         }
 
-        // Modulo 16
-        let c = c - (16 * (c / 16));
+        
 
         if (c = 0) {
             // Advance to GO
             do p.moveTo(0);
-            do board.tiles[0].activate(p, board);
+            do board.handleLanding(p);
         }
         else {
             if (c = 1) {
@@ -47,7 +49,7 @@ class ChestTile {
                         else {
                             if (c = 5) {
                                 // Go to Jail
-                                do p.goToJail();
+                                do board.sendToJail(p);
                             }
                             else {
                                 if (c = 6) {
@@ -119,3 +121,4 @@ class ChestTile {
         return;
     }
 }
+
