@@ -16,10 +16,25 @@ class PropertyTile {
     }
 
     method void activate(Player p, Board board) {
+        var int buy;
+        let buy = 0;
 
         // No owner, attempt to buy
         if (owner = null) {
-            do p.buyProperty(this, price, board);
+            do Output.moveCursor(7, 7);
+            do Output.printString("This is a unclaimed");
+            do Output.moveCursor(8, 7);
+            do Output.printString("proper land");
+            do Output.moveCursor(10, 8);
+            do Output.printString("Press Y to buy it");
+            do Output.moveCursor(11, 7);
+            do Output.printString("Press N to skip it");
+            while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
+                let buy = Keyboard.keyPressed();
+            }
+            if (buy = 89 | buy = 121){
+                do p.buyProperty(this, price, board);
+            }
             return;
         }
 

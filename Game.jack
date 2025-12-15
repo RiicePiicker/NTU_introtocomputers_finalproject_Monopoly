@@ -1,7 +1,7 @@
 class Game{
 
     field Array players;
-	//field Board board;
+	field Board board;
 
     constructor Game new() {
         let players = Array.new(4);
@@ -676,8 +676,11 @@ class Game{
             let pips = Game.rollDice();
 
             do currentPlayer.move(pips, 40);
-			//do board.handleLanding(currentPlayer);
-			do Sys.wait(1000);
+			do board.handleLanding(currentPlayer);
+			do Sys.wait(500);
+
+            do board.handleLanding(currentPlayer);
+            do Sys.wait(300);
 
 			do Screen.clearScreen();
 	        do Game.drawMap();
@@ -688,7 +691,9 @@ class Game{
             if (nowIndex = 4){
                 let nowIndex = 0;
             }
-            let end = true;
+            if (bankruptcy){ //未完成
+                end=ture;
+            }
         }
         return;
     }

@@ -4,7 +4,11 @@ class GoTile {
     }
 
     method void activate(Player p) {
-        do p.collect(200);
+        do Output.moveCursor(7, 11);
+        do Output.printString("Go tile!!");
+        do Output.moveCursor(8, 10);
+        do Output.printString("earned $200!");
+        do p.receive(200);
         return;
     }
 }

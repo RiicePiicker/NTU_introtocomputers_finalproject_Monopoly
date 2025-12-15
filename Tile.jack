@@ -49,9 +49,9 @@ class Tile {
         return this;
     }
 
-    constructor Tile newChest(Deck deck) {
+    constructor Tile newChest() {
         let type = CHEST;
-        let cTile = ChestTile.new(deck);
+        let cTile = ChestTile.new();
         return this;
     }
 
@@ -61,9 +61,9 @@ class Tile {
         return this;
     }
 
-    constructor Tile newChance(Deck deck) {
+    constructor Tile newChance() {
         let type = CHANCE;
-        let chTile = ChanceTile.new(deck);
+        let chTile = ChanceTile.new();
         return this;
     }
 
@@ -102,7 +102,7 @@ class Tile {
             return;
         }
         if (type = TAX) {
-            do tTile.activate(p);
+            do tTile.activate(p, board);
             return;
         }
         if (type = CHEST) {
@@ -129,7 +129,7 @@ class Tile {
             return;
         }
         if (type = GOTO_JAIL) {
-            do board.sendToJail(p, jailTile);
+            do board.sendToJail(p);
             return;
         }
         if (type = PARKING) {

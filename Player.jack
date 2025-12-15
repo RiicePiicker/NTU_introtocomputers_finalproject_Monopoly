@@ -34,14 +34,14 @@ class Player {
     }
 
     method void move(int steps, int boardSize) {
-        do Player.drawClearPlayer(xCoordinate[location], yCoordinate[location]);
+        //do Player.drawClearPlayer(xCoordinate[location], yCoordinate[location]);
         let location = location + steps;
         
         if (~(location < boardSize)) {
             let location = location - (boardSize * (location / boardSize));
             do receive(200); // Collect $200 for passing GO
         }
-        do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
+        //do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
 
         return;
     }
@@ -57,7 +57,7 @@ class Player {
         
         // Check for bankruptcy
         if (balance < 0) {
-            do board.handleBankruptcy(this);
+            //do board.handleBankruptcy(this);
         }
         return;
     }
@@ -92,6 +92,9 @@ class Player {
             do i.setOwner(this);
             let infras = infras + 1;
         }
+        else{
+            do Output.printString("12");
+        }
         return;
     }
     
@@ -108,7 +111,7 @@ class Player {
     // 坐牢 (Go To Jail) - FIX: Reset jailTurns
     method void goToJail() {
         let inJail = true;
-        do Player.drawClearPlayer(xCoordinate[location], yCoordinate[location]);
+        //do Player.drawClearPlayer(xCoordinate[location], yCoordinate[location]);
         let location = 10;
         do Player.drawPlayer(id, 29, 219); //牢房的座標
         let jailTurns = 0;

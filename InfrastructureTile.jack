@@ -21,11 +21,10 @@ class InfrastructureTile {
     method int calculateRent(Board board) {
         var int numInfras;
         var int rentMultiplier;
-        var int diceRollSum;
+        var int pips;
         var int rent;
         
-        do board.rollDice(); 
-        let diceRollSum = board.getDiceSum(); 
+        let pips = Game.rollDice(); 
         
         let numInfras = owner.getInfras();
         
@@ -36,16 +35,30 @@ class InfrastructureTile {
             let rentMultiplier = 10;
         }
 
-        let rent = diceRollSum * rentMultiplier;
+        let rent = pips * rentMultiplier;
         
         return rent;
     }
 
     method void activate(Player p, Board board) {
         var int rentDue;
+        var int buy;
         
         if (owner = null) {
-            do board.askBuy(p, this, basePrice);
+            do Output.moveCursor(7, 7);
+            do Output.printString("This is a unclaimed");
+            do Output.moveCursor(8, 7);
+            do Output.printString("infrastructure land");
+            do Output.moveCursor(10, 8);
+            do Output.printString("Press Y to buy it");
+            do Output.moveCursor(11, 7);
+            do Output.printString("Press N to skip it");
+            while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
+                let buy = Keyboard.keyPressed();
+            }
+            if (buy = 89 | buy = 121){
+                do p.buyInfrastructure(this, basePrice, board);
+            }
             return;
         } 
         
@@ -56,11 +69,5 @@ class InfrastructureTile {
             do owner.receive(rentDue);
         }
         return; 
-    }
-
-    method void buyTile(Player p) {
-        do p.buyInfrastructure(this, basePrice);
-        do setOwner(p);
-        return;
     }
 }

@@ -4,7 +4,6 @@ class Board{
     field int jailPos;
     field Array players;
     field int playerCounts;
-    field int sum;
 
 
     constructor Board new() {
@@ -20,12 +19,12 @@ class Board{
         let tiles[0]=Tile.newGo();
         let tiles[1]=Tile.newProperty(50,2,40);
         let tiles[2]=Tile.newProperty(50,3,40);
-        let tiles[3]=Tile.newChest(null);
+        let tiles[3]=Tile.newChest();
         let tiles[4]=Tile.newProperty(60,4,40);
         let tiles[5]=Tile.newTrain(200);
         let tiles[6]=Tile.newProperty(100,6,60);
         let tiles[7]=Tile.newProperty(100,6,60);
-        let tiles[8]=Tile.newChance(null);
+        let tiles[8]=Tile.newChance();
         let tiles[9]=Tile.newProperty(120,8,60);
         let tiles[10]=Tile.newJail();
         let tiles[11]=Tile.newProperty(140,10,80);
@@ -39,7 +38,7 @@ class Board{
         let tiles[19]=Tile.newProperty(200,16,100);
         let tiles[20]=Tile.newParking();
         let tiles[21]=Tile.newProperty(220,18,130);
-        let tiles[22]=Tile.newChance(null);
+        let tiles[22]=Tile.newChance();
         let tiles[23]=Tile.newProperty(220,18,130);
         let tiles[24]=Tile.newProperty(240,20,130);
         let tiles[25]=Tile.newTrain(200);
@@ -47,9 +46,9 @@ class Board{
         let tiles[27]=Tile.newInfrastructure(150);
         let tiles[28]=Tile.newProperty(260,22,150);
         let tiles[29]=Tile.newProperty(280,24,150);
-        let tiles[30]=Tile.newGoToJail();
+        let tiles[30]=Tile.newGoToJail(tiles[10]);
         let tiles[31]=Tile.newProperty(300,26,180);
-        let tiles[32]=Tile.newChest(null);
+        let tiles[32]=Tile.newChest();
         let tiles[33]=Tile.newProperty(300,26,180);
         let tiles[34]=Tile.newProperty(320,28,180);
         let tiles[35]=Tile.newTrain(200);
@@ -60,6 +59,7 @@ class Board{
 
         return;
     }
+
     method void handleLanding(Player p) {
         var int loc;
         var Tile t;
@@ -70,12 +70,14 @@ class Board{
         do t.activate(p,this);
         return;
     }
+
     method void sendToJail(Player p){
         do p.moveTo(jailPos);
         do p.goToJail();
 
         return;
     }
+
     method void handleBankruptcy(Player p) {
         var int i;
         var Tile t;
@@ -93,6 +95,7 @@ class Board{
         let playerCounts=count;
         return;
     }
+
     method void receiveFromOther(Player p, int price) {
         var int i;
         var Player current;
@@ -104,65 +107,6 @@ class Board{
                 do current.pay(price,this);
             }
             let i=i+1;
-        }
-        return;
-    }
-    method void rollDice() {
-        var int n;
-        do Output.moveCursor(19, 35);
-        do Output.printString("Press any");
-        do Output.moveCursor(20, 35);
-        do Output.printString("key to stop");
-        do Output.moveCursor(21, 35);
-        do Output.printString("the dice");
-        let n=0;
-        let sum=0;
-        while (~(Keyboard.keyPressed())) {
-            let n=n+1;
-            if (n > 6) {
-                let n=1;
-            }
-            do Game.drawPips(n, 0);
-        }
-        let sum = n;
-        do Screen.setColor(0);
-        do Screen.drawRectangle(280, 205, 370, 250);
-        do Output.moveCursor(20, 35);
-        do Output.printString("Wait");
-        do Sys.wait(500);
-        do Screen.setColor(0);
-        do Screen.drawRectangle(280, 205, 370, 250);
-        do Output.moveCursor(19, 35);
-        do Output.printString("Press any");
-        do Output.moveCursor(20, 35);
-        do Output.printString("key to stop");
-        do Output.moveCursor(21, 35);
-        do Output.printString("the dice");
-        while (~(Keyboard.keyPressed())) {
-            let n=n+1;
-            if (n > 6) {
-                let n=1;
-            }
-            do Game.drawPips(n, 1);
-        }
-        let sum = sum + n;
-        do Screen.setColor(0);
-        do Screen.drawRectangle(280, 205, 370, 250);
-        do Output.moveCursor(20, 35);
-        do Output.printString("Get ");
-        do Output.printInt(sum);
-        do Output.printString(" pips!");
-    }
-    method int getDiceSum() {
-        return sum;
-    }
-    method void askBuy(Player p,TrainTile train,int basePrice) {
-        //ask yes or no
-        if() {        //yes
-            do Train.buyTile(Player p);
-        }
-        if() {        //no
-            return;
         }
         return;
     }
