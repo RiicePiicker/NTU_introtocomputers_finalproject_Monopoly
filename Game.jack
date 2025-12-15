@@ -109,10 +109,10 @@ class Game{
         do Game.drawWater(157, 35);
         do Game.drawGoToJail(226,4);
 
-        //Textbox
-        do Screen.drawRectangle(65, 97, 192, 160);
-        do Screen.setColor(0);
-        do Screen.drawRectangle(66, 98, 191, 159);
+        // //Textbox
+        // do Screen.drawRectangle(65, 97, 192, 160);
+        // do Screen.setColor(0);
+        // do Screen.drawRectangle(66, 98, 191, 159);
 
         do Screen.setColor(1);
 
@@ -612,15 +612,15 @@ class Game{
         do Output.printString("key to stop");
         do Output.moveCursor(21, 35);
         do Output.printString("the dice");
-        let n=5;
+        let n=0;
         while (~(Keyboard.keyPressed())) {
             let n=n+1;
-            do Game.drawPips(n+1, 0);
-            if (n = 6) {
-                let n=0;
+            if (n > 6) {
+                let n=1;
             }
+            do Game.drawPips(n, 0);
         }
-        let pips = n+1;
+        let pips = n;
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
         do Output.moveCursor(20, 35);
@@ -634,15 +634,14 @@ class Game{
         do Output.printString("key to stop");
         do Output.moveCursor(21, 35);
         do Output.printString("the dice");
-        let n=5;
         while (~(Keyboard.keyPressed())) {
             let n=n+1;
-            do Game.drawPips(n+1, 1);
-            if (n = 6) {
-                let n=0;
+            if (n > 6) {
+                let n=1;
             }
+            do Game.drawPips(n, 1);
         }
-        let pips = pips + (n+1);
+        let pips = pips + n;
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
         do Output.moveCursor(20, 35);
@@ -657,10 +656,10 @@ class Game{
     // }
 
     method void start() {
-        var boolean end;
-        var int pips;
-        var Player currentPlayer;
-        var int nowIndex;
+        var boolean end; // 遊戲結束
+        var int pips; // 點數
+        var Player currentPlayer; // 當下玩家
+        var int nowIndex; // 當下玩家編號-1
         let nowIndex = 0;
         let end = false;
         do printPlayerInfo();
@@ -671,13 +670,13 @@ class Game{
 
             do Output.moveCursor(5, 8);
             do Output.printString("Player ");
-            do Output.printInt(currentPlayer+1);
+            do Output.printInt(nowIndex+1);
             do Output.printString("'s turn!");
 
             let pips = Game.rollDice();
 
-            do noPlayer.move(pips, 40);
-			do board.handleLanding(currentPlayer);
+            do currentPlayer.move(pips, 40);
+			//do board.handleLanding(currentPlayer);
 			do Sys.wait(1000);
 
 			do Screen.clearScreen();
