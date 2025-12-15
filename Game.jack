@@ -660,11 +660,24 @@ class Game{
         var int pips; // 點數
         var Player currentPlayer; // 當下玩家
         var int nowIndex; // 當下玩家編號-1
+        var int pos; // 當下玩家位置
+        var Player draw;
+        var int tmp;
+        var int tmpx;
+        var int tmpy;
+        let tmp=0;
         let nowIndex = 0;
         let end = false;
+        let currentPlayer = players[nowIndex];
         do printPlayerInfo();
         do Game.drawDice();
         do Game.drawMap();
+        while (tmp<4){
+            let tmpx = currentPlayer.getxCoordinate(0);
+            let tmpy = currentPlayer.getyCoordinate(0);
+            do Player.drawPlayer(tmp, tmpx, tmpy);
+            let tmp = tmp+1;
+        }
         while (~end){
             let currentPlayer = players[nowIndex];
 
@@ -687,13 +700,25 @@ class Game{
             do printPlayerInfo();
             do Game.drawDice();
 
+            let tmp = 0;
+            while (tmp<4){
+                let draw = players[tmp];
+                let pos = draw.getLocation();
+                let tmpx = draw.getxCoordinate(pos);
+                let tmpy = draw.getyCoordinate(0);
+                do Player.drawPlayer(tmp, tmpx, tmpy);
+                let tmp = tmp+1;
+            }
+
+            do Sys.wait(5000);
+
             let currentPlayer = currentPlayer+1;
             if (nowIndex = 4){
                 let nowIndex = 0;
             }
-            if (bankruptcy){ //未完成
-                end=ture;
-            }
+            // if (bankruptcy){ //未完成
+            //     end=ture;
+            // }
         }
         return;
     }

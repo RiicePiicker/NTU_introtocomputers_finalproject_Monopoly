@@ -14,89 +14,91 @@ class Player {
     field Array xCoordinate;
     field Array yCoordinate;
 
-    //coordinate
-    let xCoordinate[0] = 226;
-    let yCoordinate[0] = 234;
-    let xCoordinate[1] = 196;
-    let yCoordinate[1] = 234;
-    let xCoordinate[2] = 177;
-    let yCoordinate[2] = 234;
-    let xCoordinate[3] = 158;
-    let yCoordinate[3] = 234;
-    let xCoordinate[4] = 139;
-    let yCoordinate[4] = 234;
-    let xCoordinate[5] = 120;
-    let yCoordinate[5] = 234;
-    let xCoordinate[6] = 101;
-    let yCoordinate[6] = 234;
-    let xCoordinate[7] = 82;
-    let yCoordinate[7] = 234;
-    let xCoordinate[8] = 63;
-    let yCoordinate[8] = 234;
-    let xCoordinate[9] = 44;
-    let yCoordinate[9] = 234;
-    let xCoordinate[10] = 3;
-    let yCoordinate[10] = 234;
-    let xCoordinate[11] = 3;
-    let yCoordinate[11] = 196;
-    let xCoordinate[12] = 3;
-    let yCoordinate[12] = 177;
-    let xCoordinate[13] = 3;
-    let yCoordinate[13] = 158;
-    let xCoordinate[14] = 3;
-    let yCoordinate[14] = 139;
-    let xCoordinate[15] = 3;
-    let yCoordinate[15] = 120;
-    let xCoordinate[16] = 3;
-    let yCoordinate[16] = 101;
-    let xCoordinate[17] = 3;
-    let yCoordinate[17] = 82;
-    let xCoordinate[18] = 3;
-    let yCoordinate[18] = 63;
-    let xCoordinate[19] = 3;
-    let yCoordinate[19] = 44;
-    let xCoordinate[20] = 13;
-    let yCoordinate[20] = 22;
-    let xCoordinate[21] = 44;
-    let yCoordinate[21] = 3;
-    let xCoordinate[22] = 63;
-    let yCoordinate[22] = 3;
-    let xCoordinate[23] = 82;
-    let yCoordinate[23] = 3;
-    let xCoordinate[24] = 101;
-    let yCoordinate[24] = 3;
-    let xCoordinate[25] = 120;
-    let yCoordinate[25] = 3;
-    let xCoordinate[26] = 139;
-    let yCoordinate[26] = 3;
-    let xCoordinate[27] = 158;
-    let yCoordinate[27] = 3;
-    let xCoordinate[28] = 177;
-    let yCoordinate[28] = 3;
-    let xCoordinate[29] = 196;
-    let yCoordinate[29] = 3;
-    let xCoordinate[30] = 225;
-    let yCoordinate[30] = 22;
-    let xCoordinate[31] = 235;
-    let yCoordinate[31] = 44;
-    let xCoordinate[32] = 235;
-    let yCoordinate[32] = 63;
-    let xCoordinate[33] = 235;
-    let yCoordinate[33] = 82;
-    let xCoordinate[34] = 235;
-    let yCoordinate[34] = 101;
-    let xCoordinate[35] = 235;
-    let yCoordinate[35] = 120;
-    let xCoordinate[36] = 235;
-    let yCoordinate[36] = 139;
-    let xCoordinate[37] = 235;
-    let yCoordinate[37] = 158;
-    let xCoordinate[38] = 235;
-    let yCoordinate[38] = 177;
-    let xCoordinate[39] = 235;
-    let yCoordinate[39] = 196;
-
     constructor Player new() {
+        //coordinate
+        let xCoordinate = Array.new(40);
+        let yCoordinate = Array.new(40);
+        let xCoordinate[0] = 226;
+        let yCoordinate[0] = 234;
+        let xCoordinate[1] = 196;
+        let yCoordinate[1] = 234;
+        let xCoordinate[2] = 177;
+        let yCoordinate[2] = 234;
+        let xCoordinate[3] = 158;
+        let yCoordinate[3] = 234;
+        let xCoordinate[4] = 139;
+        let yCoordinate[4] = 234;
+        let xCoordinate[5] = 120;
+        let yCoordinate[5] = 234;
+        let xCoordinate[6] = 101;
+        let yCoordinate[6] = 234;
+        let xCoordinate[7] = 82;
+        let yCoordinate[7] = 234;
+        let xCoordinate[8] = 63;
+        let yCoordinate[8] = 234;
+        let xCoordinate[9] = 44;
+        let yCoordinate[9] = 234;
+        let xCoordinate[10] = 3;
+        let yCoordinate[10] = 234;
+        let xCoordinate[11] = 3;
+        let yCoordinate[11] = 196;
+        let xCoordinate[12] = 3;
+        let yCoordinate[12] = 177;
+        let xCoordinate[13] = 3;
+        let yCoordinate[13] = 158;
+        let xCoordinate[14] = 3;
+        let yCoordinate[14] = 139;
+        let xCoordinate[15] = 3;
+        let yCoordinate[15] = 120;
+        let xCoordinate[16] = 3;
+        let yCoordinate[16] = 101;
+        let xCoordinate[17] = 3;
+        let yCoordinate[17] = 82;
+        let xCoordinate[18] = 3;
+        let yCoordinate[18] = 63;
+        let xCoordinate[19] = 3;
+        let yCoordinate[19] = 44;
+        let xCoordinate[20] = 13;
+        let yCoordinate[20] = 22;
+        let xCoordinate[21] = 44;
+        let yCoordinate[21] = 3;
+        let xCoordinate[22] = 63;
+        let yCoordinate[22] = 3;
+        let xCoordinate[23] = 82;
+        let yCoordinate[23] = 3;
+        let xCoordinate[24] = 101;
+        let yCoordinate[24] = 3;
+        let xCoordinate[25] = 120;
+        let yCoordinate[25] = 3;
+        let xCoordinate[26] = 139;
+        let yCoordinate[26] = 3;
+        let xCoordinate[27] = 158;
+        let yCoordinate[27] = 3;
+        let xCoordinate[28] = 177;
+        let yCoordinate[28] = 3;
+        let xCoordinate[29] = 196;
+        let yCoordinate[29] = 3;
+        let xCoordinate[30] = 225;
+        let yCoordinate[30] = 22;
+        let xCoordinate[31] = 235;
+        let yCoordinate[31] = 44;
+        let xCoordinate[32] = 235;
+        let yCoordinate[32] = 63;
+        let xCoordinate[33] = 235;
+        let yCoordinate[33] = 82;
+        let xCoordinate[34] = 235;
+        let yCoordinate[34] = 101;
+        let xCoordinate[35] = 235;
+        let yCoordinate[35] = 120;
+        let xCoordinate[36] = 235;
+        let yCoordinate[36] = 139;
+        let xCoordinate[37] = 235;
+        let yCoordinate[37] = 158;
+        let xCoordinate[38] = 235;
+        let yCoordinate[38] = 177;
+        let xCoordinate[39] = 235;
+        let yCoordinate[39] = 196;
+        
         let id = idCounter;
         let idCounter = idCounter + 1;
 
@@ -287,7 +289,15 @@ class Player {
         return getOutJails;
     }
 
-    function void drawClearPlayer(id, int x, int y){
+    method int getxCoordinate(int index){
+        return xCoordinate[index];
+    }
+
+    method int getyCoordinate(int index){
+        return yCoordinate[index];
+    }
+
+    function void drawClearPlayer(int id, int x, int y){
         if (id = 1){
             do Screen.drawRectangle(x+1, y+1, x+8, y+8);
         }
@@ -303,7 +313,10 @@ class Player {
         return;
     }
 
-    function void drawPlayer(int id, int x, int y){ //畫出玩家位置
+    function void drawPlayer(int id, int x, int y){ 
+        //畫出玩家位置
+        do Screen.setColor(1);
+        let id = id+1;
         if (id = 1){ //spade
             do Screen.drawRectangle(x+4, y+1, x+5, y+1);
             do Screen.drawRectangle(x+3, y+2, x+6, y+2);

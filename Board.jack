@@ -78,17 +78,17 @@ class Board{
         return;
     }
 
-    method void handleBankruptcy(Player p) {
-        var int i;
-        var Tile t;
-        let i = 0;
-        while (i < size) {
-            let t = tiles[i];
-            do t.resetOwnerIfMatches(p);  //還沒做
-            let i = i + 1;
-        }
-        return;
-    }
+    // method void handleBankruptcy(Player p) {
+    //     var int i;
+    //     var Tile t;
+    //     let i = 0;
+    //     while (i < size) {
+    //         let t = tiles[i];
+    //         do t.resetOwnerIfMatches(p);  //還沒做
+    //         let i = i + 1;
+    //     }
+    //     return;
+    // }
 
     method void setPlayer(Array pArray, int count) {
         let players=pArray;
@@ -110,17 +110,17 @@ class Board{
         }
         return;
     }
-    method void dispose() {
-        var int i;
-        var Tile t;
-        let i = 0;
-        while (i < size) {
-            let t = tiles[i];
-            do t.dispose(); // 清除每一格
-            let i = i + 1;
-        }
-        do tiles.dispose(); // 清除陣列
-        do Memory.deAlloc(this); // 清除自己
-        return;
-    }
+    // method void dispose() {
+    //     var int i;
+    //     var Tile t;
+    //     let i = 0;
+    //     while (i < size) {
+    //         let t = tiles[i];
+    //         do t.dispose(); // 清除每一格
+    //         let i = i + 1;
+    //     }
+    //     do tiles.dispose(); // 清除陣列
+    //     do Memory.deAlloc(this); // 清除自己
+    //     return;
+    // }
 }
