@@ -93,8 +93,8 @@ class Game{
         do Game.drawProperties(7, 214, 100);
         
         do Screen.setColor(1);
-        do Game.drawGo(219, 221);
-        do Game.drawCar(5,3);
+        do Game.drawGo(219, 218);
+        do Game.drawCar(5,2);
         do Game.drawChest(158,221);
         do Game.drawChest2(221,63);
         do Game.drawMetro(120,221);
