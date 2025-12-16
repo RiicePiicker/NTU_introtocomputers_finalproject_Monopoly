@@ -1,18 +1,21 @@
 class ChestTile {
-    field int oiiai;
-
     constructor ChestTile new() {
         return this;
+    }
+    method void printf(String msg, int row) {
+        do Output.moveCursor(7+row, 7);
+        do Output.printString(msg);
+        do do msg.dispose();
+        return;
     }
 
     method void activate(Player p, Board board) {
         var int c;
         var int houses;
         var int cost;
-
-        let c = 0;
-
         // Random number generation using timing
+        do printf("press any key",0);
+        do printf("to draw a card...",1);
         while (~(Keyboard.keyPressed())) {
             let c = c + 1;
             if(c = 16){
@@ -24,72 +27,142 @@ class ChestTile {
 
         if (c = 0) {
             // Advance to GO
+            do printf("Advance to Go",0);
+
             do p.moveTo(0);
             do board.handleLanding(p);
         }
         else {
             if (c = 1) {
                 // Bank error in your favor
+                do printf("Your overworked",0);
+                do printf("TA accidentally",1);
+                do printf("gave you a 100",2);
+                do printf("instead of a 10.",3);
+                do printf("You receive a",4);
+                do printf("$200 scholarship.",5);
+
                 do p.receive(200);
             }
             else {
                 if (c = 2) {
                     // Doctor's fees
+                    do printf("You got the flu.",0);
+                    do printf("Pay $50",1);
+
                     do p.pay(50, board);
                 }
                 else {
                     if (c = 3) {
                         // Sale of stock
+                        do printf("You received $50",0);
+                        do printf("from the student",1);
+                        do printf("you tutor",2);
+
                         do p.receive(50);
                     }
                     else {
                         if (c = 4) {
                             // Get Out of Jail Free
+                            do printf("Your Prof.",0);
+                            do printf("signed your",1);
+                            do printf("withdrawal form.",2);
+                            do printf("Get Out of",3);
+                            do printf("Jail +1.",4);
+
                             do p.addGetOutOfJailCard();
                         }
                         else {
                             if (c = 5) {
                                 // Go to Jail
+                                do printf("You failed too",0);
+                                do printf("many classes and",1);
+                                do printf("were put on",2);
+                                do printf("academic probation.",3);
+                                do printf("Go to Jail",4);
+
                                 do board.sendToJail(p);
                             }
                             else {
                                 if (c = 6) {
                                     // Holiday fund matures
+                                    do printf("Your friend",0);
+                                    do printf("gave you $100",1);
+                                    do printf("because you",2);
+                                    do printf("won a bet.",3);
+
                                     do p.receive(100);
                                 }
                                 else {
                                     if (c = 7) {
                                         // Income tax refund
+                                        do printf("Money fell from",0);
+                                        do printf("the sky.",1);
+                                        do printf("Receive $20",2);
+
                                         do p.receive(20);
                                     }
                                     else {
                                         if (c = 8) {
                                             // It is your birthday
+                                            do printf("You forced",0);
+                                            do printf("every player",1);
+                                            do printf("to join your club.",2);
+                                            do printf("Collect $10",3);
+                                            do printf("from each player",4);
+
                                             do board.receiveFromOther(p, 10);
                                         }
                                         else {
                                             if (c = 9) {
                                                 // Life insurance matures
+                                                do printf("Your wealthy",0);
+                                                do printf("anonymous sponsor",1);
+                                                do printf("passed away.",2);
+                                                do printf("Recieve $100 of",3);
+                                                do printf("his life insurance",4);
+
                                                 do p.receive(100);
                                             }
                                             else {
                                                 if (c = 10) {
                                                     // Hospital fees
+                                                    do printf("You were hit",0);
+                                                    do printf("by an idiot",1);
+                                                    do printf("on a bike.",2);
+                                                    do printf("Pay $100 to",3);
+                                                    do printf("the hospital",4);
+
                                                     do p.pay(100, board);
                                                 }
                                                 else {
                                                     if (c = 11) {
                                                         // School fees
+                                                        do printf("You used too",0);
+                                                        do printf("much mobile data",1);
+                                                        do printf("this month.",2);
+                                                        do printf("Pay $50",3);
+
                                                         do p.pay(50, board);
                                                     }
                                                     else {
                                                         if (c = 12) {
                                                             // Consultancy fee
+                                                            do printf("Corporate greed",0);
+                                                            do printf("lures you in,",1);
+                                                            do printf("receive $100.",2);
+
                                                             do p.receive(25);
                                                         }
                                                         else {
                                                             if (c = 13) {
                                                                 // Street repairs
+                                                                do printf("Your buildings",0);
+                                                                do printf("were destroyed",1);
+                                                                do printf("by the typhoon.",2);
+                                                                do printf("Pay $40 per",3);
+                                                                do printf("house for repairs."4);
+
                                                                 let houses = p.getNumHouses();
                                                                 let cost = Math.multiply(40, houses);
                                                                 do p.pay(cost, board);
@@ -97,11 +170,22 @@ class ChestTile {
                                                             else {
                                                                 if (c = 14) {
                                                                     // Beauty contest
+                                                                    do printf("Your gf/bf",0);
+                                                                    do printf("appreciates you.",1);
+                                                                    do printf("You receive a",2);
+                                                                    do printf("hug and $10.",3);
+
                                                                     do p.receive(10);
                                                                 }
                                                                 else {
                                                                     if (c = 15) {
                                                                         // Inheritance
+                                                                        do printf("You saw what",0);
+                                                                        do printf("you should not",1);
+                                                                        do printf("have seen."2);
+                                                                        do printf("They gave you",3);
+                                                                        do printf("$100 to shut up.",4);
+                                                                        
                                                                         do p.receive(100);
                                                                     }
                                                                 }
@@ -122,4 +206,7 @@ class ChestTile {
         return;
     }
 }
+
+
+
 
