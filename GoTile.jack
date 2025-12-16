@@ -1,6 +1,6 @@
 class GoTile {
     field String print1;
-    field String print2
+    field String print2;
 
     constructor GoTile new() {
         let print1 = "Go tile!!";

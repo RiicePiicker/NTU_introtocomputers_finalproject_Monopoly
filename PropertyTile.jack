@@ -5,7 +5,22 @@ class PropertyTile {
     field int houses;        
     field int houseCost;
     field Player owner;
-    static String print;
+    static String prtnull1;
+    static String prtnull2;
+    static String prtnull3;
+    static String prtnull4;
+    static String prtnull5;
+    static String prtown1;
+    static String prtown2;
+    static String prtown31;
+    static String prtown32;
+    static String prtown4;
+    static String prtown5;
+    static String prtown6;
+    static String prtown7;
+    static String prtother1;
+    static String prtother2;
+    static String prtother3;
 
     constructor PropertyTile new(int p, int r, int h) {
         let price = p;
@@ -22,7 +37,7 @@ class PropertyTile {
         let prtown2 = "is owned by yourself";
         let prtown31 = "You have ";
         let prtown32 = " houses here";
-        let prtown4 = "a new house costs $"
+        let prtown4 = "a new house costs $";
         let prtown5 = "Press Y to build one";
         let prtown6 = "Press N to skip it";
         let prtown7 = "You cannot build more";
@@ -69,7 +84,7 @@ class PropertyTile {
             do Output.printString(prtother1);
             do Output.moveCursor(8, 7);
             do Output.printString(prtother2);
-            do Output.printInt(owner.getId());
+            do Output.printInt(owner.getID());
             do Output.moveCursor(9, 7);
             do Output.printString(prtother3);
             do Output.printInt(rentDue);
@@ -104,7 +119,7 @@ class PropertyTile {
                 }
                 do Sys.wait(25);
                 if (buy = 89 | buy = 121){
-                    do p.buildHouse(this, houseCost, board);
+                    do p.buildHouse(this, board);
                 }
             }
             else {

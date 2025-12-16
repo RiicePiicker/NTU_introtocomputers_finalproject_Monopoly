@@ -542,7 +542,7 @@ class Game{
             do Output.printInt(id+1);
             do Output.printString(prtmoney);
             do Output.printInt(balance);
-            do Output.moveCursor(1+(4*index)+1, 35);+
+            do Output.moveCursor(1+(4*index)+1, 35);
             do Output.printString(prtoutjail);
             do Output.printInt(player.getGetOutJails());
             let index = index + 1;
