@@ -223,6 +223,13 @@ class Player {
     // Track turns spent in jail
     method void incrementJailTurns() {
         let jailTurns = jailTurns + 1;
+        do Output.printString("You have served ");
+        do Output.printInt(jailTurns);
+        do Output.printString(" in jail");
+
+        if(jailTurns = 3){
+            leaveJail();
+        }
         return;
     }
     
