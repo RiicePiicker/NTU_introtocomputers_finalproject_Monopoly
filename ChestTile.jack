@@ -5,7 +5,7 @@ class ChestTile {
     method void printf(String msg, int row) {
         do Output.moveCursor(7+row, 7);
         do Output.printString(msg);
-        do do msg.dispose();
+        do msg.dispose();
         return;
     }
 
@@ -161,7 +161,7 @@ class ChestTile {
                                                                 do printf("were destroyed",1);
                                                                 do printf("by the typhoon.",2);
                                                                 do printf("Pay $40 per",3);
-                                                                do printf("house for repairs."4);
+                                                                do printf("house for repairs.",4);
 
                                                                 let houses = p.getNumHouses();
                                                                 let cost = Math.multiply(40, houses);
@@ -182,10 +182,10 @@ class ChestTile {
                                                                         // Inheritance
                                                                         do printf("You saw what",0);
                                                                         do printf("you should not",1);
-                                                                        do printf("have seen."2);
+                                                                        do printf("have seen.",2);
                                                                         do printf("They gave you",3);
                                                                         do printf("$100 to shut up.",4);
-                                                                        
+
                                                                         do p.receive(100);
                                                                     }
                                                                 }
