@@ -86,13 +86,29 @@ class Game{
         do Screen.drawRectangle(120, 221, 137, 221); //down-line
 
         do Screen.setColor(1); //properties
-        do Game.drawProperties(1, 138, 214);
-        do Game.drawProperties(1, 176, 214);
-        do Game.drawProperties(1, 195, 214);
+        do Game.drawProperties(1, 138, 214); //1
+        do Game.drawH(196, 222);
+        do Game.drawU(202, 222);
 
-        do Game.drawProperties(2, 43, 214);
-        do Game.drawProperties(2, 81, 214);
-        do Game.drawProperties(2, 100, 214);
+        do Game.drawProperties(1, 176, 214); //2
+        do Game.drawY(177, 222);
+        do Game.drawL(183, 222);
+
+        do Game.drawProperties(1, 195, 214); //4
+        do Game.drawF(139, 222);
+        do Game.drawB(145, 222);
+
+        do Game.drawProperties(2, 43, 214);//6
+        do Game.drawS(101, 222);
+        do Game.drawF(107, 222);
+
+        do Game.drawProperties(2, 81, 214);//7
+        do Game.drawP(82, 222);
+        do Game.drawT(88, 222);
+
+        do Game.drawProperties(2, 100, 214);//9
+        do Game.drawB(44, 222);
+        do Game.drawY(50, 222);
 
         do Game.drawProperties(3, 43, 35);
         do Game.drawProperties(3, 81, 35);
@@ -115,14 +131,14 @@ class Game{
         do Game.drawProperties(7, 214, 100);
         
         do Screen.setColor(1);
-        do Game.drawGo(219, 218);
+        do Game.drawGo(219, 216);
         do Game.drawCar(5,2);
-        do Game.drawChest(158,221);
-        do Game.drawChest2(221,63);
-        do Game.drawMetro(120,221);
-        do Game.drawMetro(120,27);
-        do Game.drawMetro2(221,120);
-        do Game.drawMetro2(27,120);
+        do Game.drawChest(158,219);
+        do Game.drawChest2(219,63);
+        do Game.drawMetro(120,223);
+        do Game.drawMetro(120,25);
+        do Game.drawMetro2(223,120);
+        do Game.drawMetro2(25,120);
         do Game.drawChance(62,221);
         do Game.drawChance2(62,35);
         do Game.drawTax(221, 177);
@@ -743,4 +759,384 @@ class Game{
         }
         return;
     }
+    
+    function void drawMoney(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+2, y+1, x+4, y+1);
+        do Screen.drawRectangle(x+1, y+3, x+4, y+3);
+        do Screen.drawRectangle(x+1, y+5, x+4, y+5);
+        do Screen.drawRectangle(x+2, y+1, x+2, y+5);
+        
+        return;
+    }
+	
+    function void draw0(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+2, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+	
+    function void draw1(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawPixel(x+1, y+1);
+        do Screen.drawRectangle(x+2, y+1, x+2, y+4);
+        do Screen.drawRectangle(x+1, y+5, x+3, y+5);
+
+        return;
+    }
+
+    function void draw2(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+1, y+2, x+2, y+2);
+        do Screen.drawRectangle(x+2, y+4, x+3, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void draw3(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+1, y+2, x+2, y+2);
+        do Screen.drawRectangle(x+1, y+4, x+2, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void draw4(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+1, y+3);
+        do Screen.drawPixel(x+2, y+3);
+        do Screen.drawRectangle(x+3, y+1, x+3, y+5);
+
+        return;
+    }
+
+    function void draw5(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+        do Screen.drawRectangle(x+1, y+4, x+2, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void draw6(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+        do Screen.drawPixel(x+2, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void draw7(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+1);
+        do Screen.drawRectangle(x+3, y+2, x+3, y+5);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void draw8(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+        
+        do Screen.setColor(0);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawPixel(x+2, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void draw9(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+        
+        do Screen.setColor(0);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawRectangle(x+1, y+4, x+2, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawA(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+2, x+4, y+5);
+        do Screen.drawRectangle(x+2, y+1, x+3, y+1);
+        
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+3);
+        do Screen.drawRectangle(x+2, y+4, x+3, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawB(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+        do Screen.drawPixel(x+4, y+2);
+        do Screen.drawPixel(x+4, y+4);
+        
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+        do Screen.drawRectangle(x+2, y+4, x+3, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawC(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+        
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+4, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawD(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+        do Screen.drawRectangle(x+4, y+2, x+4, y+4);
+        
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawE(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+        
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+4, y+2);
+        do Screen.drawRectangle(x+2, y+4, x+4, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawF(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+1, y+5);
+        do Screen.drawRectangle(x+2, y+1, x+4, y+1);
+        do Screen.drawRectangle(x+2, y+3, x+4, y+3);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawG(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+1);
+        do Screen.drawRectangle(x+1, y+2, x+1, y+5);
+        do Screen.drawRectangle(x+2, y+5, x+4, y+5);
+        do Screen.drawRectangle(x+4, y+3, x+4, y+4);
+        do Screen.drawPixel(x+3, y+3);
+        
+        return;
+    }
+    
+    function void drawH(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+1, y+5);
+        do Screen.drawRectangle(x+4, y+1, x+4, y+5);
+        do Screen.drawRectangle(x+2, y+3, x+3, y+3);
+        
+        return;
+    }
+
+    //I,J,K
+    
+    function void drawL(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+1, y+5);
+        do Screen.drawRectangle(x+1, y+5, x+4, y+5);
+        
+        return;
+    }
+
+    function void drawM(int x, int y){ //wide
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+5, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+2, y+5);
+        do Screen.drawRectangle(x+4, y+2, x+4, y+5);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawN(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+1, y+5);
+        do Screen.drawRectangle(x+4, y+1, x+4, y+5);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawPixel(x+3, y+3);
+        
+        return;
+    }
+
+    function void drawO(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawP(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+3);
+        do Screen.drawRectangle(x+1, y+4, x+1, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    //Q
+
+    function void drawR(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+        do Screen.drawRectangle(x+2, y+4, x+3, y+5);
+        do Screen.drawPixel(x+4, y+3);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawS(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+4, y+2);
+        do Screen.drawRectangle(x+1, y+4, x+3, y+4);
+
+        do Screen.setColor(1);
+        
+        return;
+    }
+
+    function void drawT(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+1);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+5);
+
+        return;
+    }
+
+    function void drawU(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    //V,W
+
+    function void drawX(int x, int y){ //wide
+        do Screen.setColor(1);
+ 
+        
+        return;
+    }
+
+    function void drawY(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+1, x+3, y+2);
+        do Screen.drawRectangle(x+1, y+4, x+3, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
+    function void drawZ(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+1);
+        do Screen.drawRectangle(x+2, y+3, x+3, y+3);
+        do Screen.drawRectangle(x+1, y+5, x+4, y+5);
+        do Screen.drawPixel(x+4, y+2);
+        do Screen.drawPixel(x+2, y+4);
+
+        return;
+    }
+
+    function void drawBig9(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
+        do Screen.drawRectangle(x+1, y+4, x+3, y+4);
+
+        do Screen.setColor(1);
+
+        return;
+    }
+
 }
