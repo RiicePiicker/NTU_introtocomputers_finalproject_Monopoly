@@ -5,22 +5,6 @@ class PropertyTile {
     field int houses;        
     field int houseCost;
     field Player owner;
-    static String prtnull1;
-    static String prtnull2;
-    static String prtnull3;
-    static String prtnull4;
-    static String prtnull5;
-    static String prtown1;
-    static String prtown2;
-    static String prtown31;
-    static String prtown32;
-    static String prtown4;
-    static String prtown5;
-    static String prtown6;
-    static String prtown7;
-    static String prtother1;
-    static String prtother2;
-    static String prtother3;
 
     constructor PropertyTile new(int p, int r, int h) {
         let price = p;
@@ -28,23 +12,14 @@ class PropertyTile {
         let houseCost = h;
         let houses = 0;
         let owner = null;
-        let prtnull1 = "This is an unclaimed";
-        let prtnull2 = "infrastructure land";
-        let prtnull3 = "its price is $";
-        let prtnull4 = "Press Y to buy it";
-        let prtnull5 = "Press N to skip it";
-        let prtown1 = "This infrastructure";
-        let prtown2 = "is owned by yourself";
-        let prtown31 = "You have ";
-        let prtown32 = " houses here";
-        let prtown4 = "a new house costs $";
-        let prtown5 = "Press Y to build one";
-        let prtown6 = "Press N to skip it";
-        let prtown7 = "You cannot build more";
-        let prtother1 = "This infrastructure";
-        let prtother2 = "is owned by player ";
-        let prtother3 = "You need to pay $";
         return this;
+    }
+
+    method void print(String msg, int row) {
+        do Output.moveCursor(7+row, 7);
+        do Output.printString(msg);
+        do msg.dispose();
+        return;
     }
 
     method void activate(Player p, Board board) {
@@ -55,16 +30,11 @@ class PropertyTile {
 
         // No owner, attempt to buy
         if (owner = null) {
-            do Output.moveCursor(7, 7);
-            do Output.printString(prtnull1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtnull2);
-            do Output.moveCursor(9, 8);
-            do Output.printString(prtnull3);
-            do Output.moveCursor(10, 7);
-            do Output.printString(prtnull4);
-            do Output.moveCursor(11, 7);
-            do Output.printString(prtnull5);
+            do print("This is a unclaimed", 0);
+            do print("property land", 1);
+            do print("its price is $", 2);
+            do print("Press Y to buy it", 3);
+            do print("Press N to skip it", 4);
             do Sys.wait(25);
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
@@ -80,13 +50,10 @@ class PropertyTile {
         // Owned by someone else, pay rent
         if (~(owner = p)) {
             let rentDue = getRent();
-            do Output.moveCursor(7, 7);
-            do Output.printString(prtother1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtother2);
+            do print("This property", 0);
+            do print("is owned by player ", 1);
             do Output.printInt(owner.getID());
-            do Output.moveCursor(9, 7);
-            do Output.printString(prtother3);
+            do print("You need to pay $", 2);
             do Output.printInt(rentDue);
             do Sys.wait(25);
             do p.pay(rentDue, board);
@@ -96,23 +63,17 @@ class PropertyTile {
 
         // Owned by self, nothing happens
         if (owner = p) {
-            do Output.moveCursor(7, 7);
-            do Output.printString(prtown1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtown2);
-            do Output.moveCursor(9, 7);
-            do Output.printString(prtown31);
+            do print("This property", 0);
+            do print("is owned by yourself", 1);
+            do print("You have ", 2);
             do Output.printInt(houses);
-            do Output.printString(prtown32);
+            do print(" houses here", 3);
             do Sys.wait(25);
             if( houses < 5 ){
-                do Output.moveCursor(10, 7);
-                do Output.printString(prtown4);
+                do print("A new house costs $", 4);
                 do Output.printInt(houseCost);
-                do Output.moveCursor(11, 7);
-                do Output.printString(prtown5);
-                do Output.moveCursor(12, 7);
-                do Output.printString(prtown6);
+                do print("Press Y to build one", 5);
+                do print("Press N to skip it", 6);
                 let buy = 0;
                 while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                     let buy = Keyboard.keyPressed();
@@ -123,8 +84,8 @@ class PropertyTile {
                 }
             }
             else {
-                do Output.moveCursor(10, 7);
-                do Output.printString(prtown7);
+                do print("You cannot build more", 4);
+                do Sys.wait(300);
             }
         }
         return;
