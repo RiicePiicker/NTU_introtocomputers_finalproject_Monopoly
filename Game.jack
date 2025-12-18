@@ -592,7 +592,6 @@ class Game{
             do print("Player ", 1+(4*index), 35);
             do Output.printInt(id+1);
             do print("balance: $", 1+(4*index), 46);
-            do Output.moveCursor(1+(4*index), 35);
             do Output.printInt(balance);
             do print("OutJailCards: ", 2+(4*index), 35);
             do Output.printInt(player.getGetOutJails());
