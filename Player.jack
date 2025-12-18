@@ -127,6 +127,13 @@ class Player {
         return;
     }
 
+    method void print(String msg, int row) {
+        do Output.moveCursor(7+row, 7);
+        do Output.printString(msg);
+        do msg.dispose();
+        return;
+    }
+
     method void move(int steps, int boardSize) {
         do Sys.wait(50);
         do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
@@ -134,10 +141,8 @@ class Player {
         let location = (location + steps);
         if (~(location < boardSize)) {
             let location = (location - boardSize);
-            do Output.moveCursor(7, 9);
-            do Output.printString(prtmv1);
-            do Output.moveCursor(8, 9);
-            do Output.printString(prtmv2);
+            do print("Passed GO!", 0);
+            do print("Gained $200.", 1);
             do receive(200); // Collect $200 for passing GO
         }
 
@@ -191,13 +196,11 @@ class Player {
             do Sys.wait(50);
             do pay(price, board);
             do p.setOwner(this);
-            do Output.moveCursor(13, 9);
-            do Output.printString(prtbuy);
+            do print("Buy Success!", 6);
             do Sys.wait(500);
         }
         else{
-            do Output.moveCursor(13, 8);
-            do Output.printString(prtnomney);
+            do print("Not enough money!", 6);
             do Sys.wait(500);
         }
         return;
@@ -211,13 +214,12 @@ class Player {
             do pay(price, board);
             do i.setOwner(this);
             let infras = infras + 1;
-            do Output.moveCursor(9, 8);
-            do Output.printString(prtbuy);
+            do print("Buy Success!", 2);
             do Sys.wait(500);
         }
+
         else{
-            do Output.moveCursor(9, 8);
-            do Output.printString(prtnomney);
+            do print("Not enough money!", 2);
             do Sys.wait(500);
         }
         return;
@@ -281,8 +283,7 @@ class Player {
 
         // Must afford house
         if (~canAfford(p.getHouseCost())) {
-            do Output.moveCursor(14, 8);
-            do Output.printString(prtnomney);
+            do print("Not enough money!", 7);
             do Sys.wait(500);
             return;
         }
@@ -291,8 +292,7 @@ class Player {
         do pay(p.getHouseCost(), board);
         do p.addHouse();
         let numHouses=numHouses+1;
-        do Output.moveCursor(14, 9);
-        do Output.printString(prtbuy);
+        do print("Build Success!", 7);
         do Sys.wait(500);
         return;
     }
