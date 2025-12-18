@@ -2,12 +2,18 @@ class TrainTile {
 
     field int basePrice; 
     field Player owner;
-    static String print;
 
     constructor TrainTile new(int price) {
         let basePrice = price;
         let owner = null;
         return this;
+    }
+
+    method void print(String msg, int row) {
+        do Output.moveCursor(7+row, 7);
+        do Output.printString(msg);
+        do msg.dispose();
+        return;
     }
 
     method void setOwner(Player p) {
@@ -48,32 +54,34 @@ class TrainTile {
         var int buy;
         
         if (owner = null) {
-            do Output.moveCursor(7, 7);
-            let print = "This is a unclaimed";
-            do Output.printString(print);
-            do Output.moveCursor(8, 8);
-            let print = "railway land";
-            do Output.printString(print);
-            do Output.moveCursor(10, 8);
-            let print = "Press Y to buy it";
-            do Output.printString(print);
-            do Output.moveCursor(11, 7);
-            let print = "Press N to skip it";
-            do Output.printString(print);
+            do print("This is a unclaimed", 0);
+            do print("railway land", 1);
+            do print("Its price is $", 2);
+            do Output.printInt(basePrice);
+            do print("Press Y to buy it", 3);
+            do print("Press N to skip it", 4);
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
             }
+            do Sys.wait(25);
             if (buy = 89 | buy = 121){
                 do p.buyTrain(this, basePrice, board);
             }
+            do Sys.wait(100);
             return;
         } 
         
         if (~(owner = p)) { 
             let rentDue = calculateRent(); 
-            
+             do print("This railway", 0);
+            do print("is owned by player ", 1);
+            do Output.printInt(owner.getID());
+            do print("You need to pay $", 2);
+            do Output.printInt(rentDue);
+            do Sys.wait(25);
             do p.pay(rentDue, board);
             do owner.receive(rentDue);
+            do Sys.wait(300);
         }
         return;
     }

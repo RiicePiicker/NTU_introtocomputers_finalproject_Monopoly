@@ -13,10 +13,6 @@ class Player {
     field int numHouses;
     field Array xCoordinate;
     field Array yCoordinate;
-    static String prtmv1;
-    static String prtmv2;
-    static String prtbuy;
-    static String prtnomney;
 
     constructor Player new() {
         //coordinate
@@ -119,10 +115,6 @@ class Player {
     }
 
     function void init() {
-        let prtmv1 = "Passed GO!";
-        let prtmv2 = "Gained $200.";
-        let prtbuy = "Buy Success!";
-        let prtnomney = "Not enough money!";
         let idCounter = 0;
         return;
     }

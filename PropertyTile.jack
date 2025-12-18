@@ -55,7 +55,7 @@ class PropertyTile {
             do Output.printInt(owner.getID());
             do print("You need to pay $", 2);
             do Output.printInt(rentDue);
-            do Sys.wait(25);
+            do Sys.wait(300);
             do p.pay(rentDue, board);
             do owner.receive(rentDue);
             return;

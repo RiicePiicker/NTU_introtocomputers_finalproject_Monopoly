@@ -681,7 +681,7 @@ class Game{
         do print("Press any", 19, 35);
         do print("key to stop", 20, 35);
         do print("the dice", 21, 35);
-        let n=0;
+        let n=1;
         while (~(Keyboard.keyPressed())) {
             let n=n+1;
             if (n > 6) {
