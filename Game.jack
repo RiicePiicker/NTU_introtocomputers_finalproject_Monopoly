@@ -23,6 +23,7 @@ class Game{
 
 		let board = Board.new();
         do board.setPlayer(players, 4);
+        do PropertyTile.init();
 
         let prtplayer = "Player ";
         let prtmoney = "   balance: $";
