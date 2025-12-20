@@ -4,13 +4,16 @@ class Board{
     field int jailPos;
     field Array players;
     field int playerCounts;
-
+    field Array tileTypes;
+    field int bankruptCount;
 
     constructor Board new() {
         let players=Array.new(4);
         let size=40;
         let tiles=Array.new(40);
         let jailPos=10;
+        let tileTypes=Array.new(40);
+        let bankruptCount=0;
         do initMap();
 
         return this;
@@ -19,45 +22,85 @@ class Board{
     method void initMap() {
         do Tile.init();
         let tiles[0]=Tile.newGo();
+        let tileTypes[0]=8;
         let tiles[1]=Tile.newProperty(50,2,40);
+        let tileTypes[1]=0;
         let tiles[2]=Tile.newProperty(50,3,40);
+        let tileTypes[2]=0;
         let tiles[3]=Tile.newChest();
+        let tileTypes[3]=2;
         let tiles[4]=Tile.newProperty(60,4,40);
+        let tileTypes[4]=0;
         let tiles[5]=Tile.newTrain(200);
+        let tileTypes[5]=9;
         let tiles[6]=Tile.newProperty(100,6,60);
+        let tileTypes[6]=0;
         let tiles[7]=Tile.newProperty(100,6,60);
+        let tileTypes[7]=0;
         let tiles[8]=Tile.newChance();
+        let tileTypes[8]=3;
         let tiles[9]=Tile.newProperty(120,8,60);
+        let tileTypes[9]=0;
         let tiles[10]=Tile.newJail();
+        let tileTypes[10]=5;
         let tiles[11]=Tile.newProperty(140,10,80);
+        let tileTypes[11]=0;
         let tiles[12]=Tile.newProperty(140,10,80);
-        let tiles[13]=Tile.newInfrastructure(150);
+        let tileTypes[12]=0;
+        let tiles[13]=Tile.newInfrastructure(15);
+        let tileTypes[13]=7;
         let tiles[14]=Tile.newProperty(160,12,80);
+        let tileTypes[14]=0;
         let tiles[15]=Tile.newTrain(200);
+        let tileTypes[15]=9;
         let tiles[16]=Tile.newProperty(180,14,100);
+        let tileTypes[16]=0;
         let tiles[17]=Tile.newProperty(180,14,100);
+        let tileTypes[17]=0;
         let tiles[18]=Tile.newTax(150);
+        let tileTypes[18]=1;
         let tiles[19]=Tile.newProperty(200,16,100);
+        let tileTypes[19]=0;
         let tiles[20]=Tile.newParking();
+        let tileTypes[20]=4;
         let tiles[21]=Tile.newProperty(220,18,130);
+        let tileTypes[21]=0;
         let tiles[22]=Tile.newChance();
+        let tileTypes[22]=3;
         let tiles[23]=Tile.newProperty(220,18,130);
+        let tileTypes[23]=0;
         let tiles[24]=Tile.newProperty(240,20,130);
+        let tileTypes[24]=0;
         let tiles[25]=Tile.newTrain(200);
+        let tileTypes[25]=9;
         let tiles[26]=Tile.newProperty(260,22,150);
+        let tileTypes[26]=0;
         let tiles[27]=Tile.newInfrastructure(150);
+        let tileTypes[27]=7;
         let tiles[28]=Tile.newProperty(260,22,150);
+        let tileTypes[28]=0;
         let tiles[29]=Tile.newProperty(280,24,150);
+        let tileTypes[29]=0;
         let tiles[30]=Tile.newGoToJail();
+        let tileTypes[30]=6;
         let tiles[31]=Tile.newProperty(300,26,180);
+        let tileTypes[31]=0;
         let tiles[32]=Tile.newChest();
+        let tileTypes[32]=2;
         let tiles[33]=Tile.newProperty(300,26,180);
+        let tileTypes[33]=0;
         let tiles[34]=Tile.newProperty(320,28,180);
+        let tileTypes[34]=0;
         let tiles[35]=Tile.newTrain(200);
+        let tileTypes[35]=9;
         let tiles[36]=Tile.newProperty(340,34,200);
+        let tileTypes[36]=0;
         let tiles[37]=Tile.newProperty(350,35,200);
+        let tileTypes[37]=0;
         let tiles[38]=Tile.newTax(100);
+        let tileTypes[38]=1;
         let tiles[39]=Tile.newProperty(400,40,200);
+        let tileTypes[39]=0;
 
         return;
     }
@@ -79,17 +122,26 @@ class Board{
         return;
     }
 
-    // method void handleBankruptcy(Player p) {
-    //     var int i;
-    //     var Tile t;
-    //     let i = 0;
-    //     while (i < size) {
-    //         let t = tiles[i];
-    //         do t.resetOwnerIfMatches(p);  //還沒做
-    //         let i = i + 1;
-    //     }
-    //     return;
-    // }
+    method void handleBankruptcy(Player p) {
+        var int i;
+        var Tile t;
+        if (p.isBankrupt()) {
+            return;
+        }
+
+        do p.setBankrupt();
+        let bankruptCount=bankruptCount+1;
+        let i = 0;
+        while (i < size) {
+            let t=tiles[i];
+            do t.reset(p);
+            let i = i + 1;
+         }
+         return;
+     }
+      method int getBankruptCount() {
+        return bankruptCount;
+    }
 
     method void setPlayer(Array pArray, int count) {
         let players=pArray;
@@ -111,17 +163,4 @@ class Board{
         }
         return;
     }
-    // method void dispose() {
-    //     var int i;
-    //     var Tile t;
-    //     let i = 0;
-    //     while (i < size) {
-    //         let t = tiles[i];
-    //         do t.dispose(); // 清除每一格
-    //         let i = i + 1;
-    //     }
-    //     do tiles.dispose(); // 清除陣列
-    //     do Memory.deAlloc(this); // 清除自己
-    //     return;
-    // }
 }
