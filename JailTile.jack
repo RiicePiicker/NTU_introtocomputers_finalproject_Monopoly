@@ -5,7 +5,7 @@ class JailTile {
     static String prtjailt2;
     static String prtjailt3;
     static String prtjailt41;
-    static String prtjailt4;
+    static String prtjailt42;
     
     constructor JailTile new() {
         let prtjailt1 = "This is a jail tile";
