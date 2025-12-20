@@ -13,6 +13,8 @@ class InfrastructureTile {
     static String prtother1;
     static String prtother2;
     static String prtother3;
+    static String prtother4;
+    static String prtother5;
 
     constructor InfrastructureTile new(int price) {
         let basePrice = price;
@@ -135,5 +137,11 @@ class InfrastructureTile {
             do Sys.wait(300);
         }
         return; 
+    }
+    method void resetOwnerIfMatch(Player p) {
+        if (owner = p) {
+            let owner = null; 
+        }
+        return;
     }
 }
