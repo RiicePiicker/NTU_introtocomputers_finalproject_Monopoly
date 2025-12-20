@@ -11,6 +11,7 @@ class Player {
     field int trains;
     field int jailTurns;
     field int numHouses;
+    field boolean isBankrupt;
     static Array xCoordinate;
     static Array yCoordinate;
     static String prtbuy;
@@ -24,6 +25,7 @@ class Player {
     static String prtjail5;
     static String prtjail61;
     static String prtjail62;
+    static String bank;
 
     constructor Player new() {
         
@@ -38,6 +40,8 @@ class Player {
         let infras = 0;
         let trains = 0;
         let jailTurns = 0;
+
+        let isBankrupt= false;
         
         return this;
     }
@@ -137,6 +141,7 @@ class Player {
         let prtjail5 = "You have to stay";
         let prtjail61 = "here for ";
         let prtjail62 = " rounds";
+        let bank="Bankruptcy";
         return;
     }
 
@@ -187,7 +192,10 @@ class Player {
         
         // Check for bankruptcy
         if (balance < 0) {
-            //do board.handleBankruptcy(this);
+            do board.handleBankruptcy(this);
+            do Output.moveCursor(12,7);
+            do Output.printString(bank);
+            
         }
         return;
     }
@@ -343,7 +351,14 @@ class Player {
         return;
     }
 
-
+    method void setBankrupt() {
+        let isBankrupt = true;
+        return;
+    }
+    method boolean isBankrupt() {
+        return isBankrupt;
+    }
+    
     method int getLocation() {
         return location;
     }
