@@ -1,9 +1,15 @@
 class ChestTile {
-
+    static String cardche0;
+    static String cardche1;
     field int oiiai;
 
     constructor ChestTile new() {
         return this;
+    }
+    function void init() {
+        let cardche0="press any key";
+        let cardche1="to draw a card...";
+        return;
     }
     method void printf(String msg, int row) {
         do Output.moveCursor(7+row, 7);
@@ -17,8 +23,10 @@ class ChestTile {
         var int houses;
         var int cost;
         // Random number generation using timing
-        do printf("press any key",0);
-        do printf("to draw a card...",1);
+        do Output.moveCursor(7, 7);
+        do Output.printString(cardche0);
+        do Output.moveCursor(8, 7);
+        do Output.printString(cardche1);
         while (~(Keyboard.keyPressed())) {
             let c = c + 1;
             if(c = 16){
@@ -231,6 +239,11 @@ class ChestTile {
         return;
     }
 }
+
+
+
+
+
 
 
 
