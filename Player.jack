@@ -134,9 +134,9 @@ class Player {
     }
 
     method void move(int steps, int boardSize) {
-        do Sys.wait(50);
+        do Sys.wait(25);
         do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
-        do Sys.wait(50);
+        do Sys.wait(25);
         let location = (location + steps);
         if (~(location < boardSize)) {
             let location = (location - boardSize);
@@ -151,17 +151,19 @@ class Player {
             let location = location + boardSize;
         }
 
-        do Sys.wait(50);
+        do Sys.wait(25);
 
         do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
-
-        do Sys.wait(500);
 
         return;
     }
 
     method void moveTo(int space) {
+        do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
         let location = space;
+        do Sys.wait(25);
+        do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
+        do Sys.wait(25);
         return;
     }
 

@@ -24,19 +24,23 @@ class ChanceTile {
         }
         
         // Modulo 16 operation (to select one of 16 cards)
+        do Sys.wait(25);
         let c = c - (15 * (c / 15));
         
         // All subsequent calls require the Board object for bankruptcy checks,
         // so we must pass the board object in pay and buy methods.
-         do Screen.setColor(false);
-        do Screen.drawRectangle(50, 70, 400, 160);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(50, 70, 200, 160);
         do Screen.setColor(true);
         
         if (c = 0) {
             // move to boardwalk (39)
             do printf("Advance to Management",0);
-
             do p.moveTo(39);
+            do Sys.wait(500);
+            do Screen.setColor(false);
+            do Screen.drawRectangle(50, 70, 200, 160);
+            do Screen.setColor(true);
             do board.handleLanding(p);
         }
         else {
@@ -44,6 +48,10 @@ class ChanceTile {
                 // pass go (0)
                 do printf("Advance to Go",0);
                 do p.moveTo(0);
+                do Sys.wait(500);
+                do Screen.setColor(false);
+                do Screen.drawRectangle(50, 70, 200, 160);
+                do Screen.setColor(true);
                 do board.handleLanding(p);
             }
             else {
@@ -55,6 +63,10 @@ class ChanceTile {
                         do p.receive(200);
                     }
                     do p.moveTo(24);
+                    do Sys.wait(500);
+                    do Screen.setColor(false);
+                    do Screen.drawRectangle(50, 70, 200, 160);
+                    do Screen.setColor(true);
                     do board.handleLanding(p);
                 }
                 else {
@@ -66,6 +78,10 @@ class ChanceTile {
                             do p.receive(200);
                         }
                         do p.moveTo(11);
+                        do Sys.wait(500);
+                        do Screen.setColor(false);
+                        do Screen.drawRectangle(50, 70, 200, 160);
+                        do Screen.setColor(true);
                         do board.handleLanding(p);
                     }
                     else {
@@ -77,6 +93,10 @@ class ChanceTile {
                             while (~((p.getLocation() = 5) | (p.getLocation() = 15) | (p.getLocation() = 25) | (p.getLocation() = 35))) {
                                 do p.move(1, 40);
                             }
+                            do Sys.wait(1000);
+                            do Screen.setColor(false);
+                            do Screen.drawRectangle(50, 70, 200, 160);
+                            do Screen.setColor(true);
                             do board.handleLanding(p);
                         }
                         else {
@@ -84,6 +104,7 @@ class ChanceTile {
                                 do printf("After much hard",0);
                                 do printf("work, you received",1);
                                 do printf("a scholarship of $150",2);
+                                do Sys.wait(1000);
                                 // Receive $150
                                 do p.receive(150);
                             }
@@ -91,11 +112,14 @@ class ChanceTile {
                                 if (c = 6) {
                                     do printf("Advance to",0);
                                     do printf("Next Utility",1);
-
                                     // move to utility (12, 28)
                                     while (~((p.getLocation() = 12) | (p.getLocation() = 28))) {
                                         do p.move(1, 40);
                                     }
+                                    do Sys.wait(1000);
+                                    do Screen.setColor(false);
+                                    do Screen.drawRectangle(50, 70, 200, 160);
+                                    do Screen.setColor(true);
                                     do board.handleLanding(p);
                                 }
                                 else {
@@ -103,7 +127,7 @@ class ChanceTile {
                                         do printf("You have won a",0);
                                         do printf("school giveaway.",1);
                                         do printf("Collect $50",2);
-
+                                        do Sys.wait(1000);
                                         // Bank pays $50
                                         do p.receive(50);
                                     }
@@ -114,6 +138,7 @@ class ChanceTile {
                                             do printf("withdrawal form.",2);
                                             do printf("Get Out of",3);
                                             do printf("Jail +1.",4);
+                                            do Sys.wait(1000);
 
                                             // Get Out of Jail Free
                                             do p.addGetOutOfJailCard();
@@ -128,6 +153,10 @@ class ChanceTile {
 
                                                 // Go back 3 spaces
                                                 do p.move(-3, 40);
+                                                do Sys.wait(2000);
+                                                do Screen.setColor(false);
+                                                do Screen.drawRectangle(50, 70, 200, 160);
+                                                do Screen.setColor(true);
                                                 do board.handleLanding(p);
                                             }
                                             else {
@@ -135,6 +164,7 @@ class ChanceTile {
                                                     do printf("You were caught",0);
                                                     do printf("leaking past exams",1);
                                                     do printf("and sent to jail.",2);
+                                                    do Sys.wait(1000);
                                                     // Go To Jail
                                                     do board.sendToJail(p);
                                                 }
@@ -146,11 +176,12 @@ class ChanceTile {
                                                         do printf("Pay $25 for each",3);
                                                         do printf("level upgraded per",4);
                                                         do printf("property.",5);
+                                                        do Sys.wait(1500);
 
                                                         // Pay for houses/hotels ($25 per house)
                                                         // NOTE: Assumes p.getNumHouses() and p.pay(amount, board) are available
                                                         let houses = p.getNumHouses();
-                                                        do p.pay(houses * 25, board);
+                                                        do p.pay((houses * 25), board);
                                                     }
                                                     else {
                                                         if (c = 12) {
@@ -159,6 +190,7 @@ class ChanceTile {
                                                             do printf("and received a",2);
                                                             do printf("speeding fine",3);
                                                             do printf("of $15",4);
+                                                            do Sys.wait(1000);
 
                                                             // Pay $15
                                                             do p.pay(15, board);
@@ -170,6 +202,10 @@ class ChanceTile {
 
                                                                 // Move to Reading Railroad (25)
                                                                 do p.moveTo(25);
+                                                                do Sys.wait(1000);
+                                                                do Screen.setColor(false);
+                                                                do Screen.drawRectangle(50, 70, 200, 160);
+                                                                do Screen.setColor(true);
                                                                 do board.handleLanding(p);
                                                             }
                                                             else {
@@ -179,6 +215,7 @@ class ChanceTile {
                                                                     do printf("your meal too",2);
                                                                     do printf("many times. Pay",3);
                                                                     do printf("each player $50",4);
+                                                                    do Sys.wait(1500);
 
                                                                     do board.receiveFromOther(p, -50);
                                                                 }
@@ -196,6 +233,7 @@ class ChanceTile {
                 }
             }
         }
+        do Sys.wait(1000);
         return;
     }
 }

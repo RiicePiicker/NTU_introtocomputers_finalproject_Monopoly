@@ -18,6 +18,7 @@ class Game{
         do Player.init();
         do PropertyTile.init();
         do TrainTile.init();
+        do InfrastructureTile.init();
         let players = Array.new(4);
         let players[0] = Player.new();
         let players[1] = Player.new(); 
