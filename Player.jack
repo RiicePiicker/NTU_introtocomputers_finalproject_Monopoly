@@ -439,9 +439,9 @@ class Player {
             do Screen.drawRectangle(x+2+8, y+2, x+3+8, y+2);
             do Screen.drawRectangle(x+6+8, y+2, x+7+8, y+2);
             do Screen.drawRectangle(x+1+8, y+3, x+8+8, y+5);
-            do Screen.drawRectangle(x+2+8, y+6, x+6+8, y+6);
-            do Screen.drawRectangle(x+3+8, y+7, x+5+8, y+7);
-            do Screen.drawRectangle(x+4+8, y+8, x+4+8, y+8);
+            do Screen.drawRectangle(x+2+8, y+6, x+7+8, y+6);
+            do Screen.drawRectangle(x+3+8, y+7, x+6+8, y+7);
+            do Screen.drawRectangle(x+4+8, y+8, x+5+8, y+8);
         }
 
         if (id = 3){ //diamond
@@ -464,7 +464,6 @@ class Player {
 
         return;
     }
-
 }
 
 
