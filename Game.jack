@@ -780,11 +780,12 @@ class Game{
                 do Output.printInt(nowIndex+1);
                 do Output.printString(prtturn);
 
-                let pips = Game.rollDice();
-
-                do currentPlayer.move(pips, 40);
-                do Sys.wait(500);
-
+                if(~(currentPlayer.isInJail())){
+                    let pips = Game.rollDice();
+                    do currentPlayer.move(pips, 40);
+                    do Sys.wait(500);
+                }
+                
                 do board.handleLanding(currentPlayer);
                 do Sys.wait(300);
 
