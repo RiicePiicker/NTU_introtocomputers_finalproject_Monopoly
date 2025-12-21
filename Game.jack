@@ -17,11 +17,8 @@ class Game{
 		let board = Board.new();
         do Player.init();
         do PropertyTile.init();
-        do TrainTile.init();
-        do InfrastructureTile.init();
         do TaxTile.init();
-        do ChanceTile.init();
-        do ChestTile.init();
+        do Ui.init();
         let players = Array.new(4);
         let players[0] = Player.new();
         let players[1] = Player.new(); 
@@ -1171,8 +1168,6 @@ class Game{
         do Screen.drawPixel(x+4, y+3);
 
         do Screen.setColor(1);
-
-        return;
 
         return;
     }

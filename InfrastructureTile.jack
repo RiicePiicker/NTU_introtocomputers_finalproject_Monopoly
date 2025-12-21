@@ -2,19 +2,6 @@ class InfrastructureTile {
 
     field int basePrice;
     field Player owner;
-    static String prtnull1;
-    static String prtnull2;
-    static String prtnull3;
-    static String prtnull4;
-    static String prtnull5;
-    static String prtown1;
-    static String prtown2;
-    static String prtown3;
-    static String prtother1;
-    static String prtother2;
-    static String prtother3;
-    static String prtother4;
-    static String prtother5;
 
     constructor InfrastructureTile new(int price) {
         let basePrice = price;
@@ -22,22 +9,6 @@ class InfrastructureTile {
         return this;
     }
 
-    function void init(){
-        let prtnull1 = "This is an unclaimed";
-        let prtnull2 = "infrastructure land";
-        let prtnull3 = "Its price is $";
-        let prtnull4 = "Press Y to buy it";
-        let prtnull5 = "Press N to skip it";
-        let prtown1 = "This infrastructure";
-        let prtown2 = "is owned by yourself";
-        let prtown3 = "Nothing happens";
-        let prtother1 = "This infrastructure";
-        let prtother2 = "is owned by player ";
-        let prtother3 = "You need to pay $";
-        let prtother4 = "Roll the dice to";
-        let prtother5 = "decide the payment";
-        return;
-    }
 
     method void print(String msg, int row) {
         do Output.moveCursor(7+row, 7);
@@ -55,7 +26,7 @@ class InfrastructureTile {
         return owner;
     }
 
-    method int calculateRent(Board board) {
+    method int calculateRent() {
         var int numInfras;
         var int rentMultiplier;
         var int pips;
@@ -83,17 +54,8 @@ class InfrastructureTile {
         
         do Sys.wait(50);
         if (owner = null) {
-            do Output.moveCursor(7, 7);
-            do Output.printString(prtnull1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtnull2);
-            do Output.moveCursor(9, 7);
-            do Output.printString(prtnull3);
-            do Output.printInt(basePrice);
-            do Output.moveCursor(10, 7);
-            do Output.printString(prtnull4);
-            do Output.moveCursor(11, 7);
-            do Output.printString(prtnull5);
+            do Ui.printInfNull(basePrice);
+
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
             }
@@ -105,32 +67,15 @@ class InfrastructureTile {
             return;
         } 
         if (owner = p) {
-            do Output.moveCursor(7, 7);
-            do Output.printString(prtown1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtown2);
-            do Output.moveCursor(9, 9);
-            do Output.printString(prtown3);
+            do Ui.printInfself();
             do Sys.wait(300);
             return;
         }
         if (~(owner = p)) {
-            do Output.moveCursor(7, 7);
-            do Output.printString(prtother1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtother2);
-            do Output.printInt(owner.getID() + 1);
-            do Output.moveCursor(9, 7);
-            do Output.printString(prtother4);
-            do Output.moveCursor(10, 7);
-            do Output.printString(prtother5);
-            let rentDue = calculateRent(board); 
-
+            do Ui.printInfPay1(owner.getID() + 1);
+            let rentDue = calculateRent(); 
             do Sys.wait(30);
-
-            do Output.moveCursor(11, 7);
-            do Output.printString(prtother3);
-            do Output.printInt(rentDue);
+            do Ui.printInfPay2(rentDue);
             do Sys.wait(25);
             do p.pay(rentDue, board);
             do owner.receive(rentDue);

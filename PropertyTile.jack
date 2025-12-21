@@ -5,16 +5,6 @@ class PropertyTile {
     field int houses;        
     field int houseCost;
     field Player owner;
-    static String prtnull1;
-    static String prtnull2;
-    static String prtnull3;
-    static String prtnull4;
-    static String prtnull5;
-    static String prtother1;
-    static String prtother2;
-    static String prtother3;
-    static String prtself1;
-    static String prtself2;
     static String prtself31;
     static String prtself32;
     static String prtself4;
@@ -32,16 +22,6 @@ class PropertyTile {
     }
 
     function void init(){
-        let prtnull1 = "This is a unclaimed";
-        let prtnull2 = "property land";
-        let prtnull3 = "its price is $";
-        let prtnull4 = "Press Y to buy it";
-        let prtnull5 = "Press N to skip it";
-        let prtother1 = "This property";
-        let prtother2 = "is owned by player ";
-        let prtother3 = "You need to pay $";
-        let prtself1 = "This property";
-        let prtself2 = "is owned by yourself";
         let prtself31 = "You have ";
         let prtself32 = " houses here";
         let prtself4 = "A new one costs $";
@@ -59,17 +39,7 @@ class PropertyTile {
 
         // No owner, attempt to buy
         if (owner = null) {
-            do Output.moveCursor(7, 7);
-            do Output.printString(prtnull1);
-            do Output.moveCursor(8, 9);
-            do Output.printString(prtnull2);
-            do Output.moveCursor(9, 7);
-            do Output.printString(prtnull3);
-            do Output.printInt(price);
-            do Output.moveCursor(10, 7);
-            do Output.printString(prtnull4);
-            do Output.moveCursor(11, 7);
-            do Output.printString(prtnull5);
+            do Ui.printProNull(price);
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
             }
@@ -84,15 +54,9 @@ class PropertyTile {
         // Owned by someone else, pay rent
         if (~(owner = p)) {
             let rentDue = getRent();
-            do Output.moveCursor(7, 9);
-            do Output.printString(prtother1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtother2);
-            do Output.printInt(owner.getID() + 1);
-            do Output.moveCursor(9, 7);
-            do Output.printString(prtother3);
-            do Output.printInt(rentDue);
+            do Ui.printProPay(rentDue, owner.getID() + 1);
             do Sys.wait(300);
+            
             do p.pay(rentDue, board);
             do owner.receive(rentDue);
             return;
@@ -100,10 +64,7 @@ class PropertyTile {
 
         // Owned by self, nothing happens
         if (owner = p) {
-            do Output.moveCursor(7, 9);
-            do Output.printString(prtself1);
-            do Output.moveCursor(8, 7);
-            do Output.printString(prtself2);
+            do Ui.printProself();
             do Output.moveCursor(9, 7);
             do Output.printString(prtself31);
             do Output.printInt(houses);
