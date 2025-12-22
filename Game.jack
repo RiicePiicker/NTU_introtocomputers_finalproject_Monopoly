@@ -565,36 +565,6 @@ class Game{
 	    return;
     }
 
-    function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示(未完成)
-        if (id = 1){ //spade
-            do Screen.drawRectangle(x+3, y+1, x+3, y+5);
-            do Screen.drawRectangle(x+2, y+2, x+4, y+2);
-            do Screen.drawRectangle(x+1, y+3, x+5, y+4);
-        }
-
-        if (id = 2){ //heart
-            do Screen.drawRectangle(x+2, y+1, x+2, y+4);
-            do Screen.drawRectangle(x+4, y+1, x+4, y+4);
-            do Screen.drawRectangle(x+1, y+2, x+5, y+3);
-            do Screen.drawPixel(x+3, y+5);
-        }
-
-        if (id = 3){ //diamond
-            do Screen.drawRectangle(x+2, y+2, x+4, y+4);
-            do Screen.drawRectangle(x+3, y+1, x+3, y+5);
-            do Screen.drawRectangle(x+1, y+3, x+5, y+3);
-        }
-
-        if (id = 4){ //club
-            do Screen.drawRectangle(x+2, y+1, x+4, y+1);
-            do Screen.drawRectangle(x+1, y+2, x+5, y+3);
-            do Screen.drawPixel(x+3, y+4);
-            do Screen.drawRectangle(x+2, y+5, x+4, y+5);
-        }
-
-        return;
-    }
-
     method void printPlayerInfo(){
         var int index;
         var int id;
@@ -789,8 +759,6 @@ class Game{
                 do board.handleLanding(currentPlayer);
                 do Sys.wait(300);
 
-                do Screen.clearScreen();
-                do Game.drawMap();
                 do printPlayerInfo();
                 do Game.drawDice();
 
@@ -1053,7 +1021,26 @@ class Game{
         return;
     }
 
-    //I,J,K
+    function void drawI(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+        do Screen.drawRectangle(x+2, y+1, x+3, y+5);
+        do Screen.drawRectangle(x+1, y+5, x+4, y+5);
+
+        return;
+    }
+
+    function void drawJ(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+1);
+        do Screen.drawRectangle(x+3, y+2, x+3, y+5);
+        do Screen.drawRectangle(x+1, y+4, x+2, y+5);
+        do Screen.drawPixel(x+1, y+4);
+
+        return;
+    }
+
+    //K
 
     function void drawL(int x, int y){
         do Screen.setColor(1);
@@ -1065,19 +1052,14 @@ class Game{
 
     function void drawM(int x, int y){ //wide
         do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+5, y+5);
-
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+2, y+2, x+2, y+5);
-        do Screen.drawRectangle(x+4, y+2, x+4, y+5);
-
-        do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+1, y+5);
         do Screen.drawRectangle(x+5, y+1, x+5, y+5);
-        do Screen.drawRectangle(x+3, y+3, x+3, y+5);
         do Screen.drawPixel(x+2, y+2);
         do Screen.drawPixel(x+4, y+2);
+        do Screen.drawRectangle(x+3, y+3, x+3, y+5);
 
+        do Screen.setColor(1);
+        
         return;
     }
 
