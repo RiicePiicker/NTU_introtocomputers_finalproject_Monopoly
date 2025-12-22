@@ -23,7 +23,7 @@ class PropertyTile {
 
     function void init(){
         let prtself31 = "You have ";
-        let prtself32 = " houses here";
+        let prtself32 = " houses";
         let prtself4 = "A new one costs $";
         let prtself5 = "Press Y to build one";
         let prtself6 = "Press N to skip it";
@@ -71,12 +71,12 @@ class PropertyTile {
             do Output.printString(prtself32);
             do Sys.wait(25);
             if( houses < 5 ){
-                do Output.moveCursor(10, 7);
+                do Output.moveCursor(10, 6);
                 do Output.printString(prtself4);
                 do Output.printInt(houseCost);
-                do Output.moveCursor(11, 7);
+                do Output.moveCursor(11, 6);
                 do Output.printString(prtself5);
-                do Output.moveCursor(12, 8);
+                do Output.moveCursor(12, 7);
                 do Output.printString(prtself6);
                 let buy = 0;
                 while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
