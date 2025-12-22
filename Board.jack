@@ -47,7 +47,7 @@ class Board{
         let tileTypes[11]=0;
         let tiles[12]=Tile.newProperty(140,100,80);
         let tileTypes[12]=0;
-        let tiles[13]=Tile.newInfrastructure(15);
+        let tiles[13]=Tile.newInfrastructure(150);
         let tileTypes[13]=7;
         let tiles[14]=Tile.newProperty(160,120,80);
         let tileTypes[14]=0;
