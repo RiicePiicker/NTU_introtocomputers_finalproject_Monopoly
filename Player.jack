@@ -221,6 +221,7 @@ class Player {
             do Sys.wait(50);
             do pay(price, board);
             do p.setOwner(this);
+            do Player.drawOwner(id, xCoordinate[location], yCoordinate[location]);
             do Output.moveCursor(13, 8);
             do Output.printString(prtbuy);
             do Sys.wait(500);
@@ -240,6 +241,7 @@ class Player {
             do Sys.wait(50);
             do pay(price, board);
             do i.setOwner(this);
+            do Player.drawOwner(id, xCoordinate[location], yCoordinate[location]);
             let infras = infras + 1;
             do Output.moveCursor(13, 8);
             do Output.printString(prtbuy);
@@ -259,6 +261,7 @@ class Player {
         if (canAfford(price)) {
             do pay(price, board);
             do t.setOwner(this);
+            do Player.drawOwner(id, xCoordinate[location], yCoordinate[location]);
             let trains = trains + 1;
         }
         return;
@@ -345,6 +348,7 @@ class Player {
         do pay(p.getHouseCost(), board);
         do p.addHouse();
         let numHouses=numHouses+1;
+        do Player.drawLevel(numHouses, xCoordinate[location], yCoordinate[location]);
         do Output.moveCursor(13, 8);
         do Output.printString(prtbuy);
         do Sys.wait(500);
@@ -462,6 +466,124 @@ class Player {
             do Screen.drawRectangle(x+3+8, y+8+8, x+6+8, y+8+8);
         }
 
+        return;
+    }
+
+    function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示(未完成)
+        do Screen.setColor(1);
+        let id = id + 1;
+        //先處理x,y偏移量
+        if (y = 234) { //第一排
+            if (x = 120) { //車站(5)
+                let y = y - 19;
+            }
+            else {
+                let x = x + 6;
+                let y = y - 6;
+            }
+        }
+        else {
+            if (x = 3) { //第二排
+                if ((y = 158) | (y = 120)){ //電力(13)和車站(15)
+                    let x = x + 32;
+                }
+                else {
+                    let x = x + 19;
+                    let y = y + 6;
+                }
+            }
+            else {
+                if (y = 3) { //第三排
+                    if ((x = 120) | (x = 158)){ //車站(25)和水(27)
+                        let x = x + 11;
+                        let y = y + 32;
+                    }   
+                    else {
+                        let x = x + 7;
+                        let y = y + 25;
+                    }
+                }
+                else {
+                    if (x = 235) { //第四排
+                        if (y = 120){ //車站(35)
+                            let x = x - 20;
+                        }   
+                        else {
+                            let x = x - 12;
+                            let y = y + 6;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (id = 1){ //spade
+            do Screen.drawRectangle(x+3, y+1, x+3, y+5);
+            do Screen.drawRectangle(x+2, y+2, x+4, y+2);
+            do Screen.drawRectangle(x+1, y+3, x+5, y+4);
+        }
+
+        if (id = 2){ //heart
+            do Screen.drawRectangle(x+1, y+1, x+2, y+3);
+            do Screen.drawRectangle(x+4, y+1, x+5, y+3);
+            do Screen.drawRectangle(x+3, y+2, x+3, y+5);
+            do Screen.drawRectangle(x+2, y+4, x+4, y+4);
+        }
+
+        if (id = 3){ //diamond
+            do Screen.drawRectangle(x+2, y+2, x+4, y+4);
+            do Screen.drawRectangle(x+3, y+1, x+3, y+5);
+            do Screen.drawRectangle(x+1, y+3, x+5, y+3);
+        }
+
+        if (id = 4){ //club
+            do Screen.drawRectangle(x+2, y+1, x+4, y+2);
+            do Screen.drawRectangle(x+1, y+3, x+5, y+4);
+            do Screen.drawPixel(x+3, y+5);
+        }
+
+        return;
+    }
+
+    function void drawLevel(int level, int x, int y){
+        //先處理x,y偏移量
+        if (y = 234) { //第一排
+                let x = x + 12;
+                let y = y - 6;
+        }
+        if (x = 3){ //電力(13)和車站(15)   
+            let x = x + 25;
+            let y = y + 6;
+        }
+        if (y = 3) { //第三排
+            let x = x + 13;
+            let y = y + 25;
+        }
+        if (x = 235) { //第四排
+            let x = x - 6;
+            let y = y + 6;
+        }
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
+
+        do Screen.setColor(1);
+        if(level = 1){
+            do Game.draw1(x, y);
+        }
+        if(level = 2){
+            do Game.draw2(x, y);
+        }
+        if(level = 3){
+            do Game.draw3(x, y);
+        }
+        if(level = 4){
+            do Game.draw4(x, y);
+        }
+        if(level = 5){
+            do Game.draw5(x, y);
+        }
+        
         return;
     }
 }
