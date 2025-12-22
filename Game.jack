@@ -741,8 +741,8 @@ class Game{
             let tmp = tmp+1;
         }
         while (~end){
-            do Output.moveCursor(18, 5);
-            do Output.printInt(Memory.alloc(1));
+            // do Output.moveCursor(18, 5);
+            // do Output.printInt(Memory.alloc(1));
             let currentPlayer = players[nowIndex];
             if (~(currentPlayer.isBankrupt())){
                 do Output.moveCursor(5, 8);
